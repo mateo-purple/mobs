@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+[[mods]]
+modId="friendmonsters_smoke"
+version="1"
+displayName="FRIEND MONSTERS development smoke"
+[[dependencies.friendmonsters_smoke]]
+modId="friendmonsters"
+type="required"
+versionRange="[0.1,)"
+ordering="AFTER"
+side="BOTH"

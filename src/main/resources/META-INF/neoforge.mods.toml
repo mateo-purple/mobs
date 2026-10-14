@@ -1,0 +1,21 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+[[mods]]
+modId="friendmonsters"
+version="0.1.0-alpha.1"
+displayName="FRIEND MONSTERS"
+authors="Shi-shiTougarashi"
+description='''Recruit monsters with their own personalities. Vanilla controls and merchant screens.'''
+[[dependencies.friendmonsters]]
+modId="neoforge"
+type="required"
+versionRange="[21.11.45,21.12)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.friendmonsters]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.11,1.21.12)"
+ordering="NONE"
+side="BOTH"

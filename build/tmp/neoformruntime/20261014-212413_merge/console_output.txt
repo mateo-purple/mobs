@@ -1,0 +1,18 @@
+--------------------------------------------------------------------------------
+
+Command-Line:
+ - C:\Program Files\Eclipse Adoptium\jdk-21.0.5.11-hotspot\bin\java.exe
+ - -jar
+ - C:\Users\woody\FRIEND_MONSTERS_NeoForge\.gradle-home\caches\modules-2\files-2.1\net.neoforged\mergetool\2.0.7\8d217011e2eac8f185c9351240282c780be53e72\mergetool-2.0.7-fatjar.jar
+ - --client
+ - C:\Users\woody\FRIEND_MONSTERS_NeoForge\.gradle-home\caches\neoformruntime\intermediate_results\stripClient_e5c11cf2435b9c559d83a857525c9a8a24e8062a_output.jar
+ - --server
+ - C:\Users\woody\FRIEND_MONSTERS_NeoForge\.gradle-home\caches\neoformruntime\intermediate_results\stripServer_80ad1654009dac05a42499db246a0e0f5aa830a9_output.jar
+ - --ann
+ - 1.21.11
+ - --output
+ - ./output.jar
+ - --inject
+ - false
+--------------------------------------------------------------------------------
+

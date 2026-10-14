@@ -1,0 +1,26 @@
+plugins { id 'java-library'; id 'net.neoforged.moddev' version '2.0.148' }
+version='0.1.0-alpha.1'
+group='dev.shishitougarashi'
+base { archivesName='friend-monsters-neoforge-1.21.11' }
+java { toolchain.languageVersion=JavaLanguageVersion.of(21); withSourcesJar() }
+def smokeEnabled = providers.gradleProperty('smoke').isPresent()
+if (smokeEnabled) {
+    sourceSets { smoke { compileClasspath += sourceSets.main.output; runtimeClasspath += sourceSets.main.output } }
+}
+neoForge {
+    version='21.11.45'
+    runs {
+        client { client() }
+        server { server(); programArgument '--nogui' }
+        gameTestServer { type='gameTestServer'; systemProperty 'neoforge.enabledGameTestNamespaces','friendmonsters_smoke'; gameDirectory=project.file('run-smoke') }
+    }
+    if (smokeEnabled) addModdingDependenciesTo sourceSets.smoke
+    mods {
+        friendmonsters { sourceSet sourceSets.main }
+        if (smokeEnabled) friendmonsters_smoke { sourceSet sourceSets.smoke }
+    }
+}
+repositories { mavenCentral() }
+dependencies { testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'; testRuntimeOnly 'org.junit.platform:junit-platform-launcher' }
+tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8'; options.release=21 }
+test { useJUnitPlatform() }
