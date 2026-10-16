@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0c1412">
+  <meta name="description" content="ENEND 公式Mob図鑑。Minecraftの敵の中にいる味方、35種の仲間・一時友好・取引・操作を確認。ネタバレ表示は自由に切り替えられます。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ENEND | Friends Among Enemies">
+  <meta property="og:description" content="Among enemies, find your next friend. 公式ガイド＆ネタバレ切替つきMob図鑑。">
+  <title>ENEND | Friends Among Enemies · Official Mobdex</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">本文へ移動</a>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar" id="top">
+    <div class="topbar-inner shell">
+      <a href="#top" class="brand" aria-label="ENEND top">
+        <span class="brand-icon"><img src="assets/icon.svg" alt=""></span>
+        <span class="brand-text">ENEND<span class="brand-sub">FRIENDS AMONG ENEMIES</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#mobdex" data-i18n="navDex">Mob図鑑</a>
+        <a href="#commands" data-i18n="navCommands">遊び方</a>
+        <a href="#trading" data-i18n="navTrade">取引</a>
+        <a href="#reference" data-i18n="navReference">資料</a>
+      </nav>
+      <div class="top-actions">
+        <button class="lang-btn" id="langToggle" aria-label="Switch language" type="button">EN <span class="sep">/</span> <strong>JP</strong></button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden>
+      <a href="#mobdex" data-i18n="navDex">Mob図鑑</a>
+      <a href="#commands" data-i18n="navCommands">遊び方</a>
+      <a href="#trading" data-i18n="navTrade">取引</a>
+      <a href="#reference" data-i18n="navReference">資料</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <div class="eyebrow"><span class="indicator"></span> <span data-i18n="heroEyebrow">THE OFFICIAL MONSTER FIELD GUIDE</span> <span class="slash">/</span> <span class="tiny-version">ALPHA .19</span></div>
+        <h1 id="hero-title"><span data-i18n="heroTitle1">敵の中に、</span><br><span class="text-mint" data-i18n="heroTitle2">味方がいる。</span></h1>
+        <p class="hero-en">FRIENDS AMONG ENEMIES.</p>
+        <p class="hero-description" data-i18n="heroLead">必ずしも、すべてのモンスターが敵とは限らない。アイテムを贈って信頼を得れば、かつて恐れた相手が旅を共にする仲間になるかもしれません。</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#mobdex"><span data-i18n="heroExplore">仲間を探す</span><span aria-hidden="true">↗</span></a>
+          <a class="secondary-btn" href="#commands" data-i18n="heroLearn">遊び方を見る</a>
+        </div>
+        <div class="hero-metrics">
+          <div><strong>35</strong><span data-i18n="metricKinds">関連するMob</span></div>
+          <div><strong>30</strong><span data-i18n="metricFriends">直接仲間化</span></div>
+          <div><strong>05</strong><span data-i18n="metricTruce">間接加入・停戦</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="orbit-label label-top">HOSTILE_? <span>→</span> ALLIED_✓</div>
+        <div class="showcase-block">
+          <div class="showcase-shadow"></div>
+          <div class="creeper-pixel">
+            <div class="px-hi"></div><div class="eye eye-a"></div><div class="eye eye-b"></div>
+            <div class="nose"></div><div class="mouth mouth-a"></div><div class="mouth mouth-b"></div>
+          </div>
+          <div class="face-shine"></div>
+        </div>
+        <div class="heart-pixel heart-left"><span>♥</span></div>
+        <div class="heart-pixel heart-right"><span>♥</span></div>
+        <div class="orbit-label label-bottom"><span class="small-diamond">✦</span> ENEND / COMPANION <span>01</span></div>
+      </div>
+    </section>
+
+    <section class="marquee-wrap" aria-hidden="true"><div class="marquee"><span>THE ENEMY OF YESTERDAY / THE FRIEND OF TOMORROW ✦ </span><span>THE ENEMY OF YESTERDAY / THE FRIEND OF TOMORROW ✦ </span><span>THE ENEMY OF YESTERDAY / THE FRIEND OF TOMORROW ✦ </span></div></section>
+
+    <section id="mobdex" class="shell page-section dex-section">
+      <div class="section-intro"><div><div class="kicker">01 / MONSTER ENCYCLOPEDIA</div><h2 data-i18n="dexTitle">モンスター図鑑</h2><p data-i18n="dexLead">まずは身近な4種から。残りの仲間は、あなた自身の旅で見つけてください。</p></div><span class="section-mark" aria-hidden="true">✣</span></div>
+      <div class="discovery-toolbar">
+        <div class="discover-state"><span class="ring-icon">◈</span><div><strong id="discoverLabel">ネタバレ保護中</strong><small id="discoverDescription">秘密の仲間と入手条件は非表示です</small></div></div>
+        <label class="switch-control" for="spoilerToggle"><input id="spoilerToggle" type="checkbox"><span class="switch-track"><span class="switch-thumb"></span></span><span id="spoilerToggleLabel">全35種を表示</span></label>
+      </div>
+      <div class="filter-row">
+        <label class="search-box"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only" data-i18n="searchMob">Mobを検索</span><input type="search" id="mobSearch" placeholder="名前・素材・能力で検索" autocomplete="off"></label>
+        <div class="filter-list" id="categoryFilters" role="group" aria-label="Monster category filter"></div>
+      </div>
+      <div class="mob-grid" id="mobGrid" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden><span>⌕</span><strong data-i18n="nothingTitle">見つかりませんでした</strong><p data-i18n="nothingLead">別の名前やカテゴリを試してください。</p></div>
+      <div class="mystery-panel" id="mysteryPanel">
+        <div class="mystery-symbol" aria-hidden="true">?</div><div><div class="mystery-overline">HIDDEN ENTRIES</div><h3 id="mysteryTitle">あと31種の出会いが待っています。</h3><p id="mysteryCopy">ネタバレを表示すると、仲間にする条件・成功率・HP・固有能力まで閲覧できます。</p></div>
+        <button id="unlockButton" class="outline-btn" type="button">全図鑑を解禁 <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section id="commands" class="shell page-section commands-section">
+      <div class="section-intro"><div><div class="kicker">02 / FIELD MANUAL</div><h2 data-i18n="commandTitle">手ぶらで、指示を出そう。</h2><p data-i18n="commandLead">専用の管理画面は不要。Minecraftの操作だけで仲間と行動できます。</p></div></div>
+      <div class="command-grid">
+        <article class="command-card follow"><span class="number">01 / FOLLOW</span><span class="command-symbol">↗</span><h3 data-i18n="followTitle">追尾</h3><p data-i18n="followBody">プレイヤーについてきて、戦闘では味方として援護します。離れすぎると帰還を試みます。</p></article>
+        <article class="command-card stay"><span class="number">02 / STAY</span><span class="command-symbol">Ⅱ</span><h3 data-i18n="stayTitle">待機</h3><p data-i18n="stayBody">その場で停止し、勝手な索敵や援護をやめます。基地で待っていてもらいたいときに。</p></article>
+        <article class="command-card patrol"><span class="number">03 / PATROL</span><span class="command-symbol">◎</span><h3 data-i18n="patrolTitle">巡回</h3><p data-i18n="patrolBody">指示地点の周辺を動き、近くの敵と自動で交戦します。拠点の警備に。</p></article>
+      </div>
+      <div class="guide-strip"><span class="guide-icon" aria-hidden="true">☞</span><div><strong data-i18n="howSwitchTitle">素手で右クリックして切り替え</strong><p data-i18n="howSwitchBody">取引や騎乗のあるMobは、スニーク＋素手右クリックで命令します。一部のMobには専用の行動ルールがあります。</p></div></div>
+      <details class="reference-fold"><summary data-i18n="hornTitle">角笛による一斉命令（詳細）</summary><div id="hornContent"></div></details>
+    </section>
+
+    <section class="split-banner shell"><div class="split-symbol" aria-hidden="true">↗<span>♥</span></div><div><small data-i18n="bannerEyebrow">THERE IS MORE TO DISCOVER</small><h2 data-i18n="bannerTitle">敵対だけが、答えじゃない。</h2><p data-i18n="bannerCopy">ある相手とは戦い、ある相手とは交渉する。すべてのMobが同じ仲間になり方をするわけではありません。</p></div></section>
+
+    <section id="trading" class="shell page-section trading-section">
+      <div class="section-intro"><div><div class="kicker">03 / AN UNLIKELY ALLIANCE</div><h2 data-i18n="tradeTitle">危うい停戦。意外な取引。</h2><p data-i18n="tradeLead">ピリジャーを仲間にすると、近くの邪悪な村人との取引への道が開けます。誰か一人でも攻撃すれば停戦は終わりです。</p></div></div>
+      <div class="trade-top"><div class="trade-intro"><span class="trade-glyph">⬗</span><div><strong data-i18n="tradeSpotlight">取引はバニラの画面を使用</strong><p data-i18n="tradeSpotlightBody">4種類の商人には異なる商品があります。実際の内容と価格は各個体の保存された在庫に基づきます。</p></div></div><span class="trade-alert" data-i18n="tradeNoReset">alpha.19：日替わり再抽選なし</span></div>
+      <div class="merchant-grid" id="merchantGrid"></div>
+      <details class="reference-fold"><summary data-i18n="fullTradeTitle">商品の全候補・価格・取引上限（ネタバレ）</summary><div id="tradeDetails" class="reference-text"></div></details>
+    </section>
+
+    <section id="reference" class="shell page-section reference-section">
+      <div class="section-intro"><div><div class="kicker">04 / FIELD NOTES</div><h2 data-i18n="referenceTitle">資料と更新情報</h2><p data-i18n="referenceLead">この図鑑はMinecraft 26.3対応のalpha.19仕様書を基にしています。数値は初期設定で、後の更新で変更される場合があります。</p></div></div>
+      <div class="ref-grid">
+        <article class="ref-card"><span class="ref-num">01 /</span><h3 data-i18n="refSpecs">共通仕様・保存・戦闘</h3><p data-i18n="refSpecsBody">仲間のHP、装備、味方への攻撃、死亡・保存などの仕様。</p><button class="text-link" id="openCommon" data-i18n="viewDetails" type="button">詳しく見る →</button></article>
+        <article class="ref-card"><span class="ref-num">02 /</span><h3 data-i18n="refSettings">設定値・変更点</h3><p data-i18n="refSettingsBody">仲間化率、距離、待機時間などの調整と旧仕様との差分。</p><button class="text-link" id="openSettings" data-i18n="viewDetails" type="button">詳しく見る →</button></article>
+        <article class="ref-card"><span class="ref-num">03 /</span><h3 data-i18n="refExcluded">対象外のMob</h3><p data-i18n="refExcludedBody">仲間化・停戦に対応しない敵の一覧。</p><button class="text-link" id="openExcluded" data-i18n="viewDetails" type="button">詳しく見る →</button></article>
+      </div>
+      <div class="source-footer"><span class="source-label">SOURCE OF TRUTH</span><p data-i18n="sourceText">仕様はalpha.19の全35種照合文書を参照しています。コード上の実装と理想仕様が異なる箇所は原文の注意書きを優先してください。</p><a href="FULL_SPECIFICATION_JA.txt" download data-i18n="downloadRaw">日本語の全仕様書を開く ↗</a></div>
+    </section>
+  </main>
+
+  <footer class="page-footer"><div class="shell footer-inner"><div><strong>ENEND</strong><small>FRIENDS AMONG ENEMIES</small></div><p data-i18n="footerDisclaimer">非公式Minecraftファン制作MODのガイドです。Mojang / Microsoftとは無関係です。</p><div class="footer-links"><a href="https://github.com/mateo-purple/mobs" target="_blank" rel="noopener">GITHUB ↗</a><a href="https://www.curseforge.com/minecraft/mc-mods" target="_blank" rel="noopener">CURSEFORGE ↗</a><a href="#top">↑ TOP</a></div></div></footer>
+
+  <dialog id="detailDialog" aria-labelledby="dialogTitle"><div class="dialog-header"><div class="kicker">ENEND / SPECIES FILE</div><button class="close-btn" type="button" id="closeDialog" aria-label="Close dialog">×</button></div><div id="dialogBody"></div></dialog>
+  <dialog id="referenceDialog" aria-labelledby="refDialogTitle"><div class="dialog-header"><div class="kicker">ENEND / REFERENCE</div><button class="close-btn" type="button" id="closeReferenceDialog" aria-label="Close dialog">×</button></div><div id="referenceDialogBody"></div></dialog>
+</body>
+</html>
