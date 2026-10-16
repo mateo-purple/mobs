@@ -11,7 +11,7 @@
   };
   const t = {
     ja: {
-      skip:'本文へ移動',navDex:'Mob図鑑',navCommands:'遊び方',navTrade:'取引',navReference:'資料',
+      skip:'本文へ移動',navAbout:'紹介',aboutButton:'MODについて',mobdexButton:'Mob図鑑',heroTopLead:'すべてのモンスターが、あなたの敵になりたいわけじゃない。',navDex:'Mob図鑑',navCommands:'遊び方',navTrade:'取引',navReference:'資料',
       heroEyebrow:'THE OFFICIAL MONSTER FIELD GUIDE',heroTitle1:'ENEND',heroTitle2:'Friends Among Enemies',
       heroLead:'必ずしも、すべてのモンスターが敵とは限らない。アイテムを贈って信頼を得れば、かつて恐れた相手が旅を共にする仲間になるかもしれません。',
       heroExplore:'仲間を探す',heroLearn:'遊び方を見る',metricKinds:'関連するMob',metricFriends:'直接仲間化',metricTruce:'間接加入・停戦',
@@ -36,7 +36,7 @@
       all:'すべて',frontline:'前衛',ranged:'遠距離',utility:'支援',diplomacy:'交渉',boss:'強敵',
       spoilerOn:'全図鑑を表示中',spoilerOff:'ネタバレ保護中',onExplain:'35種の条件・能力を閲覧できます',offExplain:'秘密の仲間と入手条件は非表示です',showAll:'全35種を表示',hideAll:'ネタバレを隠す',
       hiddenTitle:'あと31種の出会いが待っています。',hiddenCopy:'ネタバレを表示すると、仲間にする条件・成功率・HP・固有能力まで閲覧できます。',unlock:'全図鑑を解禁',
-      viewFile:'詳しい仕様を読む',rate:'成功率',item:'仲間にする方法',hp:'最大HP',record:'技術仕様・注意点（alpha.19原文）',
+      viewFile:'詳しい仕様を読む',rate:'成功率',item:'仲間にする方法',hp:'最大HP',record:'技術的な仕様（alpha.19原文）',
       localeNote:'技術的な詳細は日本語の原文を表示しています。掲載情報はalpha.19の仕様に基づきます。',
       indirect:'間接加入・停戦',next:'次のMob',previous:'前のMob',share:'リンクをコピー',copied:'コピーしました',
       spoilerRequired:'この項目には未公開の仲間が含まれます。全図鑑のネタバレを有効にすると表示できます。',
@@ -46,7 +46,7 @@
       release:'対応版'
     },
     en: {
-      skip:'Skip to content',navDex:'Mobdex',navCommands:'How to Play',navTrade:'Trading',navReference:'Reference',
+      skip:'Skip to content',navAbout:'Description',aboutButton:'About the mod',mobdexButton:'Mobdex',heroTopLead:'Not every monster wants to be your enemy.',navDex:'Mobdex',navCommands:'How to Play',navTrade:'Trading',navReference:'Reference',
       heroEyebrow:'THE OFFICIAL MONSTER FIELD GUIDE',heroTitle1:'Your enemy,',heroTitle2:'your next friend.',
       heroLead:'Not every monster wants to be your enemy. Earn their trust with gifts and those you once feared may become your most unexpected companions.',
       heroExplore:'Explore the Mobdex',heroLearn:'How to Play',metricKinds:'Featured creature types',metricFriends:'Direct recruits',metricTruce:'Indirect / truce',
@@ -71,7 +71,7 @@
       all:'All',frontline:'Melee',ranged:'Ranged',utility:'Utility',diplomacy:'Diplomacy',boss:'Boss',
       spoilerOn:'Full Mobdex unlocked',spoilerOff:'Spoiler protection is on',onExplain:'All 35 entries and their requirements are visible',offExplain:'Secret companions and requirements stay hidden',showAll:'Reveal all 35',hideAll:'Hide spoilers',
       hiddenTitle:'31 more discoveries await.',hiddenCopy:'Reveal the full Mobdex to explore requirements, chances, health, and individual abilities.',unlock:'Reveal the Mobdex',
-      viewFile:'Read full specs',rate:'Recruit chance',item:'How to befriend',hp:'Max health',record:'Technical notes (original alpha.19 specification)',
+      viewFile:'Read full specs',rate:'Recruit chance',item:'How to befriend',hp:'Max health',record:'Technical specification (Japanese original, alpha.19)',
       localeNote:'Detailed technical descriptions are preserved in Japanese to avoid changing exact behavior. Based on alpha.19.',
       indirect:'Indirect / truce',next:'Next mob',previous:'Previous mob',share:'Copy link',copied:'Copied!',
       spoilerRequired:'This section contains unrevealed creatures. Unlock the full Mobdex to view it.',
@@ -120,10 +120,28 @@
     return `<svg class="mob-sprite" viewBox="0 0 80 80" role="img" aria-label="${esc(kind)}"><rect x="7" y="7" width="66" height="66" rx="10" fill="#10291d" stroke="#80c99a" stroke-width="2"/><path d="M11 21h57M11 40h57M11 59h57M25 10v61M43 10v61M61 10v61" stroke="#376b48" stroke-width="1" opacity=".55"/><text x="40" y="52" text-anchor="middle" font-family="sans-serif" font-size="43" fill="#b3f5c4">${mark}</text></svg>`;
   }
 
+  const englishAbout=$('about').innerHTML;
+  function renderStory(text){
+    // Format the author's field notes without accepting HTML from the source data.
+    return String(text||'').split(/\n+/).filter(Boolean).map(line=>{
+      let safe=esc(line).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
+       .replace(/\`([^`]+)\`/g,'<code>$1</code>')
+       .replace(/\*([^*]+)\*/g,'<em>$1</em>');
+      return '<p>'+safe+'</p>';
+    }).join('');
+  }
+  function changeLanguage(next){
+    if(next!==language){language=next;storage.set('enend.lang',language);}
+    applyLanguage();
+  }
   function applyLanguage(){
     document.documentElement.lang=language;
     document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=txt(el.dataset.i18n);});
-    $('langToggle').innerHTML=language==='ja'?'EN <span class="sep">/</span> <strong>JP</strong>':'<strong>EN</strong> <span class="sep">/</span> JP';
+    $('about').innerHTML=language==='ja' && window.ENEND_ABOUT_JA?window.ENEND_ABOUT_JA:englishAbout;
+    $('langJa').classList.toggle('is-current',language==='ja');
+    $('langEn').classList.toggle('is-current',language==='en');
+    $('langJa').setAttribute('aria-pressed',String(language==='ja'));
+    $('langEn').setAttribute('aria-pressed',String(language==='en'));
     $('mobSearch').placeholder=txt('searchPlaceholder');
     $('spoilerToggleLabel').textContent=spoilers?txt('hideAll'):txt('showAll');
     $('discoverLabel').textContent=txt(spoilers?'spoilerOn':'spoilerOff');
@@ -193,9 +211,9 @@
       <div class="detail-mob-image">${realMobArt(mob.id)}</div><p class="dialog-sub">${esc(language==='ja'?mob.nameEn:mob.nameJa)} &nbsp; · &nbsp; ${esc(txt(mob.category))} &nbsp; · &nbsp; ${String(mob.index).padStart(2,'0')} / 35</p>
       <div class="dialog-summary">${esc(summary)}</div>
       <div class="dialog-stats">${quickStats.map(x=>`<div class="stat"><label>${esc(x.label)}</label><strong>${esc(x.value)}</strong></div>`).join('')}</div>
-      <h3 class="dialog-section-title">${esc(txt('record'))}</h3>
-      ${language==='en'?`<div class="lang-hint">${esc(txt('localeNote'))}</div>`:''}
-      <div class="dialog-detail">${esc(mob.detail)}</div>
+      <h3 class="dialog-section-title">${language==='ja'?'生態記録':'Field Notes'}</h3>
+      <div class="dialog-story">${renderStory(window.ENEND_FIELD_GUIDE?.[language]?.[mob.id]||summary)}</div>
+      <details class="technical-original"><summary>${esc(txt('record'))}</summary><div class="dialog-detail">${esc(mob.detail)}</div></details>
       <p class="dialog-footnote">${esc(txt('sourceVersion'))}</p>
       <div class="dialog-actions"><button id="prevMob" type="button" ${idx<=0?'disabled':''}>← ${esc(txt('previous'))}</button><button id="copyMobLink" type="button">${esc(txt('share'))}</button><button id="nextMob" type="button" ${idx===current.length-1?'disabled':''}>${esc(txt('next'))} →</button></div></div>`;
     $('prevMob').addEventListener('click',()=>{if(idx>0)openMob(current[idx-1],true);});
@@ -279,7 +297,8 @@
     $('spoilerToggle').checked=spoilers;
     $('spoilerToggle').addEventListener('change',e=>setSpoilers(e.target.checked));
     $('unlockButton').addEventListener('click',()=>setSpoilers(true));
-    $('langToggle').addEventListener('click',()=>{language=language==='ja'?'en':'ja';storage.set('enend.lang',language);applyLanguage();});
+    $('langJa').addEventListener('click',()=>changeLanguage('ja'));
+    $('langEn').addEventListener('click',()=>changeLanguage('en'));
     $('mobSearch').addEventListener('input',e=>{query=e.target.value;renderMobs();});
     $('openCommon').addEventListener('click',()=>referenceWindow('common'));
     $('openSettings').addEventListener('click',()=>referenceWindow('settings'));
