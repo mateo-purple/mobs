@@ -201,7 +201,12 @@
   function openMob(mob,moveHash){
     if(!spoilers && !featuredIds.includes(mob.id)){referenceWindow('excluded');return;}
     selectedMob=mob;
-    const chance=language==='ja'?mob.chance:mob.chance.replace('直接仲間化なし','Indirect only').replace('仲間化なし','Truce only').replace('直接抽選なし','Indirect only');
+    const translatedRates={vindicator:'Indirect only',witch:'Indirect only',evoker:'Indirect only',
+      piglin_brute:'Truce only',phantom:'20% / (owned Phantoms + 1), min. 0.1%',
+      guardian:'Indirect, via Elder Guardian',warden:'HP-dependent, up to 6%',
+      wither:'HP-dependent, up to 1% (skull) or 2% (star)',
+      ender_dragon:'Dragon Egg 100% / End Crystal 0.1%'};
+    const chance=language==='ja'?mob.chance:(translatedRates[mob.id]||mob.chance);
     const method=language==='ja'?mob.method:methodsEn[mob.id]||mob.method;
     const summary=language==='ja'?mob.summaryJa:mob.summaryEn;
     const quickStats=[{label:txt('item'),value:method},{label:txt('rate'),value:chance},{label:txt('hp'),value:mob.hp||'—'}];
