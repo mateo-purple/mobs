@@ -26,7 +26,7 @@
       bannerCopy:'ある相手とは戦い、ある相手とは交渉する。すべてのMobが同じ仲間になり方をするわけではありません。',
       tradeTitle:'危うい停戦。意外な取引。',tradeLead:'ピリジャーを仲間にすると、近くの邪悪な村人との取引への道が開けます。誰か一人でも攻撃すれば停戦は終わりです。',
       tradeSpotlight:'取引はバニラの画面を使用',tradeSpotlightBody:'4種類の商人には異なる商品があります。実際の内容と価格は各個体の保存された在庫に基づきます。',
-      tradeNoReset:'alpha.19：日替わり再抽選なし',fullTradeTitle:'商品の全候補・価格・取引上限（ネタバレ）',
+      tradeNoReset:'alpha.19：日替わり再抽選なし',fullTradeTitle:'商人の取引カタログ（詳細）',
       referenceTitle:'資料と更新情報',referenceLead:'この図鑑はMinecraft 26.3対応のalpha.19仕様書を基にしています。数値は初期設定で、後の更新で変更される場合があります。',
       refSpecs:'共通仕様・保存・戦闘',refSpecsBody:'仲間のHP、装備、味方への攻撃、死亡・保存などの仕様。',
       refSettings:'設定値・変更点',refSettingsBody:'仲間化率、距離、待機時間などの調整と旧仕様との差分。',
@@ -61,7 +61,7 @@
       bannerCopy:'Some creatures fight beside you; others negotiate. No two friendships have to look alike.',
       tradeTitle:'Fragile peace. Unlikely trades.',tradeLead:'Befriend a Pillager and nearby Illagers may agree to trade. Attack even one of them and the truce comes to an end.',
       tradeSpotlight:'Uses the vanilla trading interface',tradeSpotlightBody:'Four kinds of traders offer different inventories, with stock stored per individual.',
-      tradeNoReset:'Alpha .19: no daily trade rerolls',fullTradeTitle:'All trade candidates, prices and stock (spoilers)',
+      tradeNoReset:'Alpha .19: no daily trade rerolls',fullTradeTitle:'Merchant Trading Catalog (Details)',
       referenceTitle:'Field Notes & Reference',referenceLead:'Based on the alpha.19 specification for Minecraft 26.3. Figures are defaults and may change in later releases.',
       refSpecs:'Common Rules & Combat',refSpecsBody:'Health, equipment, friendly fire, deaths and persistence.',
       refSettings:'Configuration & Changes',refSettingsBody:'Rates, ranges, timers and differences from older builds.',
@@ -104,6 +104,7 @@
   let filter = 'all';
   let query = '';
   let selectedMob = null;
+  let selectedTrader = 'common';
   const txt = key => t[language][key] ?? key;
   const mobName = mob => language==='ja'?mob.nameJa:mob.nameEn;
 
@@ -250,27 +251,71 @@
     const names={pillager:'Pillager',vindicator:'Vindicator',witch:'Witch',evoker:'Evoker'};
     const jp={pillager:'ピリジャー',vindicator:'ヴィンディケーター',witch:'ウィッチ',evoker:'エヴォーカー'};
     for(const merchant of merchantData){
-      const node=document.createElement('article');node.className='merchant-card';
+      const node=document.createElement('button');node.type='button';node.className='merchant-card';node.setAttribute('aria-controls','tradeDetails');
       node.innerHTML=`<div class="merchant-image">${realMobArt(merchant.id)}</div><h3>${esc(language==='ja'?jp[merchant.id]:names[merchant.id])}</h3>
         <p>${esc(txt('vendor'+merchant.id[0].toUpperCase()+merchant.id.slice(1)))}</p>
         <div class="merchant-meta"><span>${merchant.stock} ${language==='ja'?'取引枠':'offers'}</span><span>${language==='ja'?'一時停戦':'TRUCE'}</span></div>`;
+      node.setAttribute('aria-label',language==='ja' ? jp[merchant.id]+'の取引内容を見る' : 'Show '+names[merchant.id]+' trades');
+      node.addEventListener('click',()=>{
+        selectedTrader=merchant.id;
+        $('tradeGuideDisclosure').open=true;
+        renderTradeGuide();
+        $('tradeGuideDisclosure').scrollIntoView({behavior:'smooth',block:'start'});
+      });
       grid.append(node);
     }
+  }
+  function renderTradeGuide(){
+    const guide=window.ENEND_TRADING_GUIDE?.[language];
+    const tabs=$('tradeTabbar');
+    const panel=$('tradeDetails');
+    tabs.replaceChildren();
+    if(!guide){panel.textContent=language==='ja'?'取引データを読み込めませんでした。':'Trade catalog could not be loaded.';return;}
+    const order=['common','pillager','vindicator','witch','evoker'];
+    const labels=language==='ja'?
+      {common:'共通ルール',pillager:'ピリジャー',vindicator:'ヴィンディケーター',witch:'ウィッチ',evoker:'エヴォーカー'}:
+      {common:'General',pillager:'Pillager',vindicator:'Vindicator',witch:'Witch',evoker:'Evoker'};
+    for(const id of order){
+      const tab=document.createElement('button');
+      tab.type='button';
+      tab.className='trader-tab'+(id===selectedTrader?' active':'');
+      tab.textContent=labels[id];
+      tab.setAttribute('aria-pressed',String(id===selectedTrader));
+      tab.addEventListener('click',()=>{selectedTrader=id;renderTradeGuide();});
+      tabs.append(tab);
+    }
+    if(selectedTrader!=='common'&&!spoilers){
+      panel.innerHTML='<div class="trading-locked"><p>'+esc(txt('spoilerRequired'))+'</p><button type="button" class="outline-btn" id="unlockTrade">'+esc(txt('unlock'))+'</button></div>';
+      $('unlockTrade').addEventListener('click',()=>setSpoilers(true));
+      return;
+    }
+    const section=guide[selectedTrader];
+    if(!section){panel.textContent='—';return;}
+    const normalized=[];
+    for(let i=0;i<section.body.length;i++){
+      let part=section.body[i];
+      // Display a superscript that was split into multiple lines in the source paste.
+      if(language==='en' && part.endsWith('is ') && section.body[i+1]==='1−0.9995 ' && section.body[i+2]==='6'){
+        part+='1−0.9995⁶ '+(section.body[i+3]||'').trim();
+        i+=3;
+      }
+      normalized.push(part);
+    }
+    const lines=normalized.map(line=>{
+      let index=line.indexOf(language==='ja'?'：':':');
+      let body;
+      if(index>0&&index<105){
+        body='<strong>'+esc(line.slice(0,index+1))+'</strong> '+esc(line.slice(index+1).trim());
+      }else body=esc(line);
+      return '<div class="trade-entry">'+body+'</div>';
+    }).join('');
+    panel.innerHTML='<h3 class="trade-guide-heading">'+esc(section.title)+'</h3>'+lines+
+      '<p class="trade-footnote">'+esc(language==='ja'?'出典：alpha.19 商人・取引仕様書。':'Source: alpha.19 merchant trading specification.')+'</p>';
   }
   function renderReference(){
     const common=D.common.filter(x=>x.title.includes('角笛'));
     $('hornContent').innerHTML=common.map(block=>`<p class="reference-text">${esc(block.content)}</p>`).join('');
-    const ranges=tradeChunks();
-    let parts=[];
-    for(const id of ['common','pillager','vindicator','witch','evoker']){
-      parts.push(...ranges[id]);
-    }
-    $('tradeDetails').innerHTML=parts.map(block=>`<div class="ref-block"><h4>${esc(block.title)}</h4><p>${esc(block.content)}</p></div>`).join('');
-    // Trade entries include hidden formulas and rare prizes; closed by default.
-    if(!spoilers){
-      $('tradeDetails').innerHTML=`<p>${esc(txt('spoilerRequired'))}</p><button class="outline-btn" id="showTradeInfo" type="button">${esc(txt('unlock'))}</button>`;
-      $('showTradeInfo').addEventListener('click',()=>setSpoilers(true));
-    }
+    renderTradeGuide();
   }
   function referenceWindow(kind){
     const title=kind==='common'?txt('refSpecs'):kind==='settings'?txt('refSettings'):txt('refExcluded');
