@@ -12,7 +12,9 @@
   <title>ENEND | Friends Among Enemies · Official Mobdex</title>
   <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="refresh.css">
   <script src="data.js" defer></script>
+  <script src="mob-images.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -24,9 +26,9 @@
         <span class="brand-icon"><img src="assets/icon.svg" alt=""></span>
         <span class="brand-text">ENEND<span class="brand-sub">FRIENDS AMONG ENEMIES</span></span>
       </a>
-      <nav class="desktop-nav" aria-label="Main navigation">
+      <nav class="desktop-nav" aria-label="Main navigation"><a href="#about">Description</a>
         <a href="#mobdex" data-i18n="navDex">Mob図鑑</a>
-        <a href="#commands" data-i18n="navCommands">遊び方</a>
+        <a href="#howto" data-i18n="navCommands">遊び方</a>
         <a href="#trading" data-i18n="navTrade">取引</a>
         <a href="#reference" data-i18n="navReference">資料</a>
       </nav>
@@ -35,9 +37,9 @@
         <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
-    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden><a href="#about">Description</a>
       <a href="#mobdex" data-i18n="navDex">Mob図鑑</a>
-      <a href="#commands" data-i18n="navCommands">遊び方</a>
+      <a href="#howto" data-i18n="navCommands">遊び方</a>
       <a href="#trading" data-i18n="navTrade">取引</a>
       <a href="#reference" data-i18n="navReference">資料</a>
     </nav>
@@ -45,42 +47,67 @@
 
   <main id="main">
     <section class="hero shell" aria-labelledby="hero-title">
-      <div class="hero-text">
-        <div class="eyebrow"><span class="indicator"></span> <span data-i18n="heroEyebrow">THE OFFICIAL MONSTER FIELD GUIDE</span> <span class="slash">/</span> <span class="tiny-version">ALPHA .19</span></div>
-        <h1 id="hero-title"><span data-i18n="heroTitle1">敵の中に、</span><br><span class="text-mint" data-i18n="heroTitle2">味方がいる。</span></h1>
-        <p class="hero-en">FRIENDS AMONG ENEMIES.</p>
-        <p class="hero-description" data-i18n="heroLead">必ずしも、すべてのモンスターが敵とは限らない。アイテムを贈って信頼を得れば、かつて恐れた相手が旅を共にする仲間になるかもしれません。</p>
-        <div class="hero-actions">
-          <a class="primary-btn" href="#mobdex"><span data-i18n="heroExplore">仲間を探す</span><span aria-hidden="true">↗</span></a>
-          <a class="secondary-btn" href="#commands" data-i18n="heroLearn">遊び方を見る</a>
-        </div>
-        <div class="hero-metrics">
-          <div><strong>35</strong><span data-i18n="metricKinds">関連するMob</span></div>
-          <div><strong>30</strong><span data-i18n="metricFriends">直接仲間化</span></div>
-          <div><strong>05</strong><span data-i18n="metricTruce">間接加入・停戦</span></div>
-        </div>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="orbit-label label-top">HOSTILE_? <span>→</span> ALLIED_✓</div>
-        <div class="showcase-block">
-          <div class="showcase-shadow"></div>
-          <div class="creeper-pixel">
-            <div class="px-hi"></div><div class="eye eye-a"></div><div class="eye eye-b"></div>
-            <div class="nose"></div><div class="mouth mouth-a"></div><div class="mouth mouth-b"></div>
-          </div>
-          <div class="face-shine"></div>
-        </div>
-        <div class="heart-pixel heart-left"><span>♥</span></div>
-        <div class="heart-pixel heart-right"><span>♥</span></div>
-        <div class="orbit-label label-bottom"><span class="small-diamond">✦</span> ENEND / COMPANION <span>01</span></div>
-      </div>
-    </section>
+  <div class="hero-text">
+    <p class="release-meta">Minecraft 26.3 · NeoForge · Alpha 0.19</p>
+    <h1 id="hero-title">ENEND</h1>
+    <p class="hero-en">Friends Among Enemies</p>
+    <p class="hero-description">Not every monster wants to be your enemy.</p>
+    <div class="hero-actions"><a class="primary-btn" href="#about">About the mod</a><a class="secondary-btn" href="#mobdex">Monster Encyclopedia</a></div>
+  </div>
+  <figure class="hero-real"><img src="https://ifzp2hwuc5.ufs.sh/f/RFyaFWbnYvRpuHfHXG3tQHIdypaw1LEK7fkWoNZBnjeXxlmz" width="340" height="420" alt="A Minecraft Creeper, original game-model render" fetchpriority="high"><figcaption class="sr-only">Original Minecraft creature model render. Image source: MCRender.</figcaption></figure>
+</section>
 
-    <section class="marquee-wrap" aria-hidden="true"><div class="marquee"><span>THE ENEMY OF YESTERDAY / THE FRIEND OF TOMORROW ✦ </span><span>THE ENEMY OF YESTERDAY / THE FRIEND OF TOMORROW ✦ </span><span>THE ENEMY OF YESTERDAY / THE FRIEND OF TOMORROW ✦ </span></div></section>
+    <section id="about" class="shell about-section" aria-labelledby="about-heading">
+  <h2 id="about-heading">ENEND - Friends Among Enemies</h2>
+  <p class="intro-quote"><strong>Not every monster wants to be your enemy.</strong></p>
+  <p>Among the countless hostile creatures of Minecraft, a select few will respond to your kindness and become your allies. We call them <strong>"Enends."</strong></p>
+  <p>They will travel alongside you, fight by your side, trade valuable items, and sometimes surprise you with abilities you never expected. Even the most terrifying monsters might just become your greatest companions.</p>
+  <h3>Meet Your New Friends!</h3>
+  <div class="friend-stories">
+    <article><h4>Creeper - A Dangerous but Loyal Companion</h4>
+      <p>Who would have thought a Creeper could become your friend? Offer <strong>TNT</strong> to a Creeper, and with a little luck, it will start following you!</p>
+      <p>Be careful, though. Creepers are still Creepers, and they may sacrifice themselves in an explosion when fighting enemies. However, keeping your Creeper supplied with <strong>extra TNT</strong> changes everything: instead of blowing itself up, it will hurl TNT at enemies from a safe distance! Keep its inventory stocked, and your explosive friend will stay by your side much longer.</p>
+    </article>
+    <article><h4>Zombie - Strength in Numbers</h4>
+      <p>Zombies aren't particularly strong on their own, but they have one major advantage: sheer numbers. Offer <strong>raw meat</strong> to a Zombie for a high chance of befriending it, then equip your recruits with weapons and armor to build your very own undead army!</p>
+      <p>Keep in mind that every time a Zombie takes damage, its maximum health permanently decreases and cannot be recovered. They also grow weaker during the day, even underground. A single Zombie may be fragile, but an entire horde is another story.</p>
+    </article>
+    <article><h4>Skeleton - Your Versatile Marksman</h4>
+      <p>Skeletons are much harder to win over than Zombies, but their ranged support makes them invaluable allies. Offer <strong>arrows</strong> to earn their trust.</p>
+      <p>Once befriended, Skeletons will cover you from afar with their bows, and you can even hand them <strong>tipped arrows</strong> to add status effects to their shots! Prefer close-quarters combat? Hand your Skeleton a sword, and it will gladly swap its bow for melee combat.</p>
+    </article>
+    <article><h4>Pillager - An Unexpected Truce</h4>
+      <p>Not every enemy needs to become your soldier; sometimes, making peace is far more valuable than winning a battle. By offering <strong>food, arrows, or a crossbow</strong> to a Pillager, you can convince it to form a temporary alliance.</p>
+      <p>Better yet, as long as a friendly Pillager is nearby, other Illagers may agree to a truce as well, allowing you to trade with <strong>Vindicators, Witches, and even Evokers</strong>! They offer unusual items, powerful gear, mysterious potions, and rare treasures. Just remember: this is a fragile peace. Attack even one of them, and the entire alliance will turn against you instantly!</p>
+    </article>
+  </div>
+  <h3 id="howto">Command Your Companions!</h3>
+  <p>Giving orders requires no complicated menus. <strong>Right-click your companion with an empty hand</strong> to cycle through three behavior modes:</p>
+  <div class="simple-commands">
+    <div><strong>Follow</strong><p>Your companion follows your lead and fights alongside you. If it falls too far behind, it will hurry back to your side.</p></div>
+    <div><strong>Stay</strong><p>Your companion holds its position, letting you leave it safely behind.</p></div>
+    <div><strong>Patrol</strong><p>Your companion wanders the surrounding area and automatically engages nearby threats, perfect for guarding your base!</p></div>
+  </div>
+  <h4>Rally Your Army with Goat Horns!</h4>
+  <p>Leading a large group? You can also use <strong>Goat Horns</strong> to issue commands to all nearby companions at once:</p>
+  <ul><li><strong>Seek Goat Horn:</strong> Commands each companion to immediately attack the nearest enemy.</li><li><strong>Ponder Goat Horn:</strong> Orders all companions to <strong>Follow</strong> you.</li><li><strong>Sing Goat Horn:</strong> Orders all companions to <strong>Stay</strong> in place.</li><li><strong>Feel Goat Horn:</strong> Orders all companions to <strong>Patrol</strong> the surrounding area and hunt for enemies.</li></ul>
+  <p class="note"><em>Note: Certain monsters have unique interactions. For example, friendly Pillagers can either follow you or be dismissed. Simply <strong>right-click</strong> to trade with them, or <strong>sneak + right-click with an empty hand</strong> to change their orders.</em></p>
+  <h3>And That's Just the Beginning...</h3>
+  <p>These four are only a small glimpse into <strong>ENEND</strong>. Other creatures can aid your exploration, offer mysterious trades, unleash unusual abilities, or react in entirely unexpected ways, though some are far harder to befriend than others.</p>
+  <p><em>How many Enends can you discover?</em></p>
+  <h3>Compatibility &amp; Status</h3>
+  <table class="compatibility-table"><tbody>
+    <tr><th scope="row">Minecraft</th><td>Java Edition 26.3 / 1.21.11</td></tr>
+    <tr><th scope="row">Mod Loader</th><td>NeoForge 26.3.0.83 (26.3) / 21.11.45 (1.21.11)</td></tr>
+    <tr><th scope="row">Java Version</th><td>Java 25 (26.3) / Java 21 (1.21.11)</td></tr>
+    <tr><th scope="row">Development Status</th><td><strong>Alpha.</strong> Some features may not work as intended, and not all abilities are fully tested. Feedback and bug reports are always welcome!</td></tr>
+  </tbody></table>
+  <p class="closing-quote"><em>The next monster you encounter might not be your next enemy.<br>It might be your next friend.</em></p>
+  <h3>The Enends Team</h3>
+</section>
 
     <section id="mobdex" class="shell page-section dex-section">
-      <div class="section-intro"><div><div class="kicker">01 / MONSTER ENCYCLOPEDIA</div><h2 data-i18n="dexTitle">モンスター図鑑</h2><p data-i18n="dexLead">まずは身近な4種から。残りの仲間は、あなた自身の旅で見つけてください。</p></div><span class="section-mark" aria-hidden="true">✣</span></div>
+      <div class="section-intro"><div><h2 data-i18n="dexTitle">モンスター図鑑</h2><p data-i18n="dexLead">まずは身近な4種から。残りの仲間は、あなた自身の旅で見つけてください。</p></div></div>
       <div class="discovery-toolbar">
         <div class="discover-state"><span class="ring-icon">◈</span><div><strong id="discoverLabel">ネタバレ保護中</strong><small id="discoverDescription">秘密の仲間と入手条件は非表示です</small></div></div>
         <label class="switch-control" for="spoilerToggle"><input id="spoilerToggle" type="checkbox"><span class="switch-track"><span class="switch-thumb"></span></span><span id="spoilerToggleLabel">全35種を表示</span></label>
@@ -98,7 +125,7 @@
     </section>
 
     <section id="commands" class="shell page-section commands-section">
-      <div class="section-intro"><div><div class="kicker">02 / FIELD MANUAL</div><h2 data-i18n="commandTitle">手ぶらで、指示を出そう。</h2><p data-i18n="commandLead">専用の管理画面は不要。Minecraftの操作だけで仲間と行動できます。</p></div></div>
+      <div class="section-intro"><div><h2 data-i18n="commandTitle">手ぶらで、指示を出そう。</h2><p data-i18n="commandLead">専用の管理画面は不要。Minecraftの操作だけで仲間と行動できます。</p></div></div>
       <div class="command-grid">
         <article class="command-card follow"><span class="number">01 / FOLLOW</span><span class="command-symbol">↗</span><h3 data-i18n="followTitle">追尾</h3><p data-i18n="followBody">プレイヤーについてきて、戦闘では味方として援護します。離れすぎると帰還を試みます。</p></article>
         <article class="command-card stay"><span class="number">02 / STAY</span><span class="command-symbol">Ⅱ</span><h3 data-i18n="stayTitle">待機</h3><p data-i18n="stayBody">その場で停止し、勝手な索敵や援護をやめます。基地で待っていてもらいたいときに。</p></article>
@@ -111,24 +138,24 @@
     <section class="split-banner shell"><div class="split-symbol" aria-hidden="true">↗<span>♥</span></div><div><small data-i18n="bannerEyebrow">THERE IS MORE TO DISCOVER</small><h2 data-i18n="bannerTitle">敵対だけが、答えじゃない。</h2><p data-i18n="bannerCopy">ある相手とは戦い、ある相手とは交渉する。すべてのMobが同じ仲間になり方をするわけではありません。</p></div></section>
 
     <section id="trading" class="shell page-section trading-section">
-      <div class="section-intro"><div><div class="kicker">03 / AN UNLIKELY ALLIANCE</div><h2 data-i18n="tradeTitle">危うい停戦。意外な取引。</h2><p data-i18n="tradeLead">ピリジャーを仲間にすると、近くの邪悪な村人との取引への道が開けます。誰か一人でも攻撃すれば停戦は終わりです。</p></div></div>
+      <div class="section-intro"><div><h2 data-i18n="tradeTitle">危うい停戦。意外な取引。</h2><p data-i18n="tradeLead">ピリジャーを仲間にすると、近くの邪悪な村人との取引への道が開けます。誰か一人でも攻撃すれば停戦は終わりです。</p></div></div>
       <div class="trade-top"><div class="trade-intro"><span class="trade-glyph">⬗</span><div><strong data-i18n="tradeSpotlight">取引はバニラの画面を使用</strong><p data-i18n="tradeSpotlightBody">4種類の商人には異なる商品があります。実際の内容と価格は各個体の保存された在庫に基づきます。</p></div></div><span class="trade-alert" data-i18n="tradeNoReset">alpha.19：日替わり再抽選なし</span></div>
       <div class="merchant-grid" id="merchantGrid"></div>
       <details class="reference-fold"><summary data-i18n="fullTradeTitle">商品の全候補・価格・取引上限（ネタバレ）</summary><div id="tradeDetails" class="reference-text"></div></details>
     </section>
 
     <section id="reference" class="shell page-section reference-section">
-      <div class="section-intro"><div><div class="kicker">04 / FIELD NOTES</div><h2 data-i18n="referenceTitle">資料と更新情報</h2><p data-i18n="referenceLead">この図鑑はMinecraft 26.3対応のalpha.19仕様書を基にしています。数値は初期設定で、後の更新で変更される場合があります。</p></div></div>
+      <div class="section-intro"><div><h2 data-i18n="referenceTitle">資料と更新情報</h2><p data-i18n="referenceLead">この図鑑はMinecraft 26.3対応のalpha.19仕様書を基にしています。数値は初期設定で、後の更新で変更される場合があります。</p></div></div>
       <div class="ref-grid">
         <article class="ref-card"><span class="ref-num">01 /</span><h3 data-i18n="refSpecs">共通仕様・保存・戦闘</h3><p data-i18n="refSpecsBody">仲間のHP、装備、味方への攻撃、死亡・保存などの仕様。</p><button class="text-link" id="openCommon" data-i18n="viewDetails" type="button">詳しく見る →</button></article>
         <article class="ref-card"><span class="ref-num">02 /</span><h3 data-i18n="refSettings">設定値・変更点</h3><p data-i18n="refSettingsBody">仲間化率、距離、待機時間などの調整と旧仕様との差分。</p><button class="text-link" id="openSettings" data-i18n="viewDetails" type="button">詳しく見る →</button></article>
         <article class="ref-card"><span class="ref-num">03 /</span><h3 data-i18n="refExcluded">対象外のMob</h3><p data-i18n="refExcludedBody">仲間化・停戦に対応しない敵の一覧。</p><button class="text-link" id="openExcluded" data-i18n="viewDetails" type="button">詳しく見る →</button></article>
       </div>
-      <div class="source-footer"><span class="source-label">SOURCE OF TRUTH</span><p data-i18n="sourceText">仕様はalpha.19の全35種照合文書を参照しています。コード上の実装と理想仕様が異なる箇所は原文の注意書きを優先してください。</p><a href="FULL_SPECIFICATION_JA.txt" download data-i18n="downloadRaw">日本語の全仕様書を開く ↗</a></div>
+      <div class="source-footer"><span class="source-label">Specification</span><p data-i18n="sourceText">仕様はalpha.19の全35種照合文書を参照しています。コード上の実装と理想仕様が異なる箇所は原文の注意書きを優先してください。</p><a href="FULL_SPECIFICATION_JA.txt" download data-i18n="downloadRaw">日本語の全仕様書を開く ↗</a></div>
     </section>
   </main>
 
-  <footer class="page-footer"><div class="shell footer-inner"><div><strong>ENEND</strong><small>FRIENDS AMONG ENEMIES</small></div><p data-i18n="footerDisclaimer">非公式Minecraftファン制作MODのガイドです。Mojang / Microsoftとは無関係です。</p><div class="footer-links"><a href="https://github.com/mateo-purple/mobs" target="_blank" rel="noopener">GITHUB ↗</a><a href="https://www.curseforge.com/minecraft/mc-mods" target="_blank" rel="noopener">CURSEFORGE ↗</a><a href="#top">↑ TOP</a></div></div></footer>
+  <footer class="page-footer"><div class="shell footer-inner"><div><strong>ENEND</strong><small>FRIENDS AMONG ENEMIES</small></div><p data-i18n="footerDisclaimer">非公式Minecraftファン制作MODのガイドです。Mojang / Microsoftとは無関係です。</p><div class="footer-links"><a href="https://github.com/mateo-purple/mobs" target="_blank" rel="noopener">GITHUB ↗</a><a href="https://www.curseforge.com/minecraft/mc-mods" target="_blank" rel="noopener">CURSEFORGE ↗</a><a href="#top">↑ TOP</a></div><a href="https://www.mcrender.net/png" target="_blank" rel="noopener" class="render-credit">Minecraft mob renders: MCRender ↗</a></div></footer>
 
   <dialog id="detailDialog" aria-labelledby="dialogTitle"><div class="dialog-header"><div class="kicker">ENEND / SPECIES FILE</div><button class="close-btn" type="button" id="closeDialog" aria-label="Close dialog">×</button></div><div id="dialogBody"></div></dialog>
   <dialog id="referenceDialog" aria-labelledby="refDialogTitle"><div class="dialog-header"><div class="kicker">ENEND / REFERENCE</div><button class="close-btn" type="button" id="closeReferenceDialog" aria-label="Close dialog">×</button></div><div id="referenceDialogBody"></div></dialog>
