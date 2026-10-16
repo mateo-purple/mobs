@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="refresh.css">
   <script src="data.js" defer></script>
   <script src="mob-images.js" defer></script>
+  <script src="field-guide.js" defer></script>
+  <script src="about-ja.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -26,18 +28,18 @@
         <span class="brand-icon"><img src="assets/icon.svg" alt=""></span>
         <span class="brand-text">ENEND<span class="brand-sub">FRIENDS AMONG ENEMIES</span></span>
       </a>
-      <nav class="desktop-nav" aria-label="Main navigation"><a href="#about">Description</a>
+      <nav class="desktop-nav" aria-label="Main navigation"><a href="#about" data-i18n="navAbout">紹介</a>
         <a href="#mobdex" data-i18n="navDex">Mob図鑑</a>
         <a href="#howto" data-i18n="navCommands">遊び方</a>
         <a href="#trading" data-i18n="navTrade">取引</a>
         <a href="#reference" data-i18n="navReference">資料</a>
       </nav>
       <div class="top-actions">
-        <button class="lang-btn" id="langToggle" aria-label="Switch language" type="button">EN <span class="sep">/</span> <strong>JP</strong></button>
+        <div class="language-choices" role="group" aria-label="Language / 言語"><button class="lang-btn is-current" id="langJa" type="button" lang="ja" aria-pressed="true">🇯🇵 日本語</button><button class="lang-btn" id="langEn" type="button" lang="en" aria-pressed="false">🇬🇧 English</button></div>
         <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
-    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden><a href="#about">Description</a>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden><a href="#about" data-i18n="navAbout">紹介</a>
       <a href="#mobdex" data-i18n="navDex">Mob図鑑</a>
       <a href="#howto" data-i18n="navCommands">遊び方</a>
       <a href="#trading" data-i18n="navTrade">取引</a>
@@ -51,8 +53,8 @@
     <p class="release-meta">Minecraft 26.3 · NeoForge · Alpha 0.19</p>
     <h1 id="hero-title">ENEND</h1>
     <p class="hero-en">Friends Among Enemies</p>
-    <p class="hero-description">Not every monster wants to be your enemy.</p>
-    <div class="hero-actions"><a class="primary-btn" href="#about">About the mod</a><a class="secondary-btn" href="#mobdex">Monster Encyclopedia</a></div>
+    <p class="hero-description" data-i18n="heroTopLead">すべてのモンスターが、あなたの敵になりたいわけじゃない。</p>
+    <div class="hero-actions"><a class="primary-btn" href="#about" data-i18n="aboutButton">MODについて</a><a class="secondary-btn" href="#mobdex" data-i18n="mobdexButton">Mob図鑑</a></div>
   </div>
   <figure class="hero-real"><img src="assets/mobs/creeper.webp" width="340" height="420" alt="A Minecraft Creeper, original game-model render" fetchpriority="high"><figcaption class="sr-only">Original Minecraft creature model render. Image source: MCRender.</figcaption></figure>
 </section>
