@@ -12,10 +12,10 @@
   const t = {
     ja: {
       skip:'本文へ移動',navDex:'Mob図鑑',navCommands:'遊び方',navTrade:'取引',navReference:'資料',
-      heroEyebrow:'THE OFFICIAL MONSTER FIELD GUIDE',heroTitle1:'敵の中に、',heroTitle2:'味方がいる。',
+      heroEyebrow:'THE OFFICIAL MONSTER FIELD GUIDE',heroTitle1:'ENEND',heroTitle2:'Friends Among Enemies',
       heroLead:'必ずしも、すべてのモンスターが敵とは限らない。アイテムを贈って信頼を得れば、かつて恐れた相手が旅を共にする仲間になるかもしれません。',
       heroExplore:'仲間を探す',heroLearn:'遊び方を見る',metricKinds:'関連するMob',metricFriends:'直接仲間化',metricTruce:'間接加入・停戦',
-      dexTitle:'モンスター図鑑',dexLead:'まずは身近な4種から。残りの仲間は、あなた自身の旅で見つけてください。',
+      dexTitle:'Mobを選ぶ',dexLead:'画像を選ぶと詳しい仕様を確認できます。秘密のMobはネタバレ切替で表示。',
       searchMob:'Mobを検索',searchPlaceholder:'名前・素材・能力で検索',nothingTitle:'見つかりませんでした',nothingLead:'別の名前やカテゴリを試してください。',
       commandTitle:'手ぶらで、指示を出そう。',commandLead:'専用の管理画面は不要。Minecraftの操作だけで仲間と行動できます。',
       followTitle:'追尾',followBody:'プレイヤーについてきて、戦闘では味方として援護します。離れすぎると帰還を試みます。',
@@ -50,7 +50,7 @@
       heroEyebrow:'THE OFFICIAL MONSTER FIELD GUIDE',heroTitle1:'Your enemy,',heroTitle2:'your next friend.',
       heroLead:'Not every monster wants to be your enemy. Earn their trust with gifts and those you once feared may become your most unexpected companions.',
       heroExplore:'Explore the Mobdex',heroLearn:'How to Play',metricKinds:'Featured creature types',metricFriends:'Direct recruits',metricTruce:'Indirect / truce',
-      dexTitle:'Monster Encyclopedia',dexLead:'Meet four familiar faces first. Find the rest of your companions on your own journey.',
+      dexTitle:'Choose a Mob',dexLead:'Select a creature for its details. Reveal hidden entries only if you want spoilers.',
       searchMob:'Search mobs',searchPlaceholder:'Search name, item, ability…',nothingTitle:'No matches found',nothingLead:'Try a different name or category.',
       commandTitle:'No menus. Just commands.',commandLead:'Interact with companions using familiar Minecraft controls.',
       followTitle:'Follow',followBody:'Your companion travels with you and supports you in combat, returning if it falls too far behind.',
@@ -152,6 +152,11 @@
       $('categoryFilters').append(btn);
     }
   }
+  function realMobArt(id) {
+    const entry=window.ENEND_IMAGES && window.ENEND_IMAGES[id];
+    if (!entry || !entry.src) return '<span class="art-fallback">Image unavailable</span>';
+    return '<img class="mob-render" src="'+esc(entry.src)+'" alt="'+esc(entry.alt||('Minecraft '+id))+'" loading="lazy" decoding="async" referrerpolicy="no-referrer">';
+  }
   function renderMobs(){
     let available=spoilers?D.mobs:featuredIds.map(id=>D.mobs.find(m=>m.id===id));
     available=available.filter(m=>filter==='all'||m.category===filter);
@@ -164,9 +169,8 @@
     for(const mob of available){
       const article=document.createElement('article');article.className='mob-card';
       article.style.setProperty('--tone',categoryColors[mob.category]||'#304a3b');
-      article.innerHTML=`<div class="mob-image"><span class="card-number">${String(mob.index).padStart(2,'0')}</span><span class="card-cat">${esc(txt(mob.category).toUpperCase())}</span>${svgFor(mob.id)}</div>
-         <div class="card-content"><h3>${esc(mobName(mob))}</h3><div class="mob-localized">${esc(language==='ja'?mob.nameEn:mob.nameJa)}</div><p class="card-summary">${esc(language==='ja'?mob.summaryJa:mob.summaryEn)}</p>
-         <div class="card-bottom"><span class="chance">${esc(mob.chance)}</span><span class="card-more">${esc(txt('viewFile'))} ↗</span></div></div>`;
+      article.innerHTML=`<div class="mob-image">${realMobArt(mob.id)}</div>
+        <div class="card-content"><h3>${esc(mobName(mob))}</h3><div class="mob-localized">${esc(language==='ja'?mob.nameEn:mob.nameJa)}</div></div>`;
       const action=document.createElement('button');action.className='card-click';action.type='button';
       action.setAttribute('aria-label',`${txt('viewFile')}: ${mobName(mob)}`);
       action.addEventListener('click',()=>openMob(mob,true));article.append(action);grid.append(article);
@@ -186,7 +190,7 @@
     const current=spoilers?D.mobs:featuredIds.map(id=>D.mobs.find(x=>x.id===id));
     const idx=current.findIndex(x=>x.id===mob.id);
     $('dialogBody').innerHTML=`<div class="dialog-content"><h2 id="dialogTitle" class="dialog-title">${esc(mobName(mob))}</h2>
-      <p class="dialog-sub">${esc(language==='ja'?mob.nameEn:mob.nameJa)} &nbsp; · &nbsp; ${esc(txt(mob.category))} &nbsp; · &nbsp; ${String(mob.index).padStart(2,'0')} / 35</p>
+      <div class="detail-mob-image">${realMobArt(mob.id)}</div><p class="dialog-sub">${esc(language==='ja'?mob.nameEn:mob.nameJa)} &nbsp; · &nbsp; ${esc(txt(mob.category))} &nbsp; · &nbsp; ${String(mob.index).padStart(2,'0')} / 35</p>
       <div class="dialog-summary">${esc(summary)}</div>
       <div class="dialog-stats">${quickStats.map(x=>`<div class="stat"><label>${esc(x.label)}</label><strong>${esc(x.value)}</strong></div>`).join('')}</div>
       <h3 class="dialog-section-title">${esc(txt('record'))}</h3>
@@ -224,7 +228,7 @@
     const jp={pillager:'ピリジャー',vindicator:'ヴィンディケーター',witch:'ウィッチ',evoker:'エヴォーカー'};
     for(const merchant of merchantData){
       const node=document.createElement('article');node.className='merchant-card';
-      node.innerHTML=`<div class="merchant-icon" aria-hidden="true">${merchant.icon}</div><h3>${esc(language==='ja'?jp[merchant.id]:names[merchant.id])}</h3>
+      node.innerHTML=`<div class="merchant-image">${realMobArt(merchant.id)}</div><h3>${esc(language==='ja'?jp[merchant.id]:names[merchant.id])}</h3>
         <p>${esc(txt('vendor'+merchant.id[0].toUpperCase()+merchant.id.slice(1)))}</p>
         <div class="merchant-meta"><span>${merchant.stock} ${language==='ja'?'取引枠':'offers'}</span><span>${language==='ja'?'一時停戦':'TRUCE'}</span></div>`;
       grid.append(node);
