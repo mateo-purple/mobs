@@ -295,8 +295,8 @@
     for(let i=0;i<section.body.length;i++){
       let part=section.body[i];
       // Display a superscript that was split into multiple lines in the source paste.
-      if(language==='en' && part.endsWith('is ') && section.body[i+1]==='1−0.9995 ' && section.body[i+2]==='6'){
-        part+='1−0.9995⁶ '+(section.body[i+3]||'').trim();
+      if(language==='en' && part.endsWith('is') && section.body[i+1]==='1−0.9995' && section.body[i+2]==='6'){
+        part+=' 1−0.9995⁶ '+(section.body[i+3]||'').trim();
         i+=3;
       }
       normalized.push(part);
