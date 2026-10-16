@@ -142,3 +142,32 @@ h1,h2,h3,h4{letter-spacing:-.02em;line-height:1.35}
  .topbar-inner{gap:8px}
  .brand-sub{font-size:7px}
 }
+
+
+/* Merchant trading catalog: compact, fully bilingual and keyboard navigable. */
+.merchant-grid .merchant-card{display:block;text-align:left;color:inherit;width:100%;font:inherit;cursor:pointer}
+.merchant-grid .merchant-card:focus-visible{outline:2px solid #a8dfa5;outline-offset:3px}
+.merchant-grid .merchant-card:hover{border-color:#90bd8e;background:#283a2c}
+#tradeGuideDisclosure{margin-top:22px;border:1px solid #3b4b3f;background:#1c251f;border-radius:8px;overflow:hidden}
+#tradeGuideDisclosure>summary{cursor:pointer;font-size:16px;font-weight:700;padding:17px 20px;background:#26342a;color:#e2f1e3}
+#tradeGuideDisclosure>summary:hover{background:#304133}
+.trade-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:18px 19px;border-bottom:1px solid #36473b}
+.trader-tab{background:#233127;color:#cbd9cd;border:1px solid #455b49;border-radius:5px;padding:9px 13px;font-size:13px;font-weight:650}
+.trader-tab.active{background:#b3e7ae;border-color:#b3e7ae;color:#18301c}
+.trader-tab:hover:not(.active){background:#334739;color:white}
+.trader-tab:focus-visible{outline:2px solid #b3e7ae;outline-offset:3px}
+.trade-guide-details{padding:19px 24px 23px;max-height:650px;overflow:auto;overscroll-behavior:contain}
+.trade-guide-heading{font-size:18px;margin:0 0 14px;color:#e4f4e3}
+.trade-entry{padding:10px 0;border-bottom:1px solid #314035;color:#cfdbd1;font-size:13px;line-height:1.85;overflow-wrap:anywhere}
+.trade-entry strong{color:#eef9ec}
+.trade-entry:last-of-type{border-bottom:0}
+.trading-locked{min-height:125px;display:flex;flex-wrap:wrap;align-items:center;gap:15px;color:#e5f1e4;font-size:14px}
+.trading-locked p{flex:1;min-width:240px}
+.trade-footnote{font-size:11px;color:#9eafa1;padding-top:18px}
+@media(max-width:580px){
+ #tradeGuideDisclosure>summary{font-size:14px;padding:14px}
+ .trade-tabs{gap:6px;padding:11px}
+ .trader-tab{font-size:12px;padding:7px 9px}
+ .trade-guide-details{padding:13px 14px;max-height:560px}
+ .trade-entry{font-size:12px;padding:9px 0}
+}
