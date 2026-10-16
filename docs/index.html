@@ -17,6 +17,7 @@
   <script src="mob-images.js" defer></script>
   <script src="field-guide.js" defer></script>
   <script src="about-ja.js" defer></script>
+  <script src="trading-guide.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -143,7 +144,7 @@
       <div class="section-intro"><div><h2 data-i18n="tradeTitle">危うい停戦。意外な取引。</h2><p data-i18n="tradeLead">ピリジャーを仲間にすると、近くの邪悪な村人との取引への道が開けます。誰か一人でも攻撃すれば停戦は終わりです。</p></div></div>
       <div class="trade-top"><div class="trade-intro"><span class="trade-glyph">⬗</span><div><strong data-i18n="tradeSpotlight">取引はバニラの画面を使用</strong><p data-i18n="tradeSpotlightBody">4種類の商人には異なる商品があります。実際の内容と価格は各個体の保存された在庫に基づきます。</p></div></div><span class="trade-alert" data-i18n="tradeNoReset">alpha.19：日替わり再抽選なし</span></div>
       <div class="merchant-grid" id="merchantGrid"></div>
-      <details class="reference-fold"><summary data-i18n="fullTradeTitle">商品の全候補・価格・取引上限（ネタバレ）</summary><div id="tradeDetails" class="reference-text"></div></details>
+      <details class="reference-fold" id="tradeGuideDisclosure"><summary data-i18n="fullTradeTitle">商人の取引カタログ</summary><div id="tradeTabbar" class="trade-tabs" role="group" aria-label="Trader selection"></div><div id="tradeDetails" class="trade-guide-details" aria-live="polite"></div></details>
     </section>
 
     <section id="reference" class="shell page-section reference-section">
