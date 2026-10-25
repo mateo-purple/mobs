@@ -1,140 +1,71 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#10121a">
-  <meta name="description" content="BEDROCK STRATA 深淵の博物誌。リディア執筆による日本語・英語の探索ガイド。">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="BEDROCK STRATA">
-  <meta property="og:title" content="BEDROCK STRATA | Compendium of the Abyss">
-  <meta property="og:description" content="A bilingual exploration guide based on Lydia's original manuscript.">
-  <link rel="canonical" href="https://mateo-purple.github.io/mobs/bedrock-strata/">
-  <link rel="icon" type="image/svg+xml" href="assets/strata-mark.svg">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="manuscript.css">
-  <script src="content.js" defer></script>
-  <script src="app.js" defer></script>
-  <title>BEDROCK STRATA | 深淵の博物誌</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#141720">
+<meta name="description" content="BEDROCK STRATA 深淵の博物誌。奈落世界と失われた遺物の日本語・英語攻略ガイド。">
+<meta property="og:title" content="BEDROCK STRATA | Compendium of the Abyss">
+<meta property="og:description" content="A bilingual guide to lost Minecraft history beneath the bedrock.">
+<link rel="canonical" href="https://mateo-purple.github.io/mobs/bedrock-strata/">
+<link rel="stylesheet" href="manuscript.css">
+<script src="content.js" defer></script><script src="app.js" defer></script>
+<title>BEDROCK STRATA | 深淵の博物誌</title>
 </head>
 <body>
-  <a class="skip-link" href="#main" id="skipLink">本文へ移動</a>
-  <div class="noise" aria-hidden="true"></div>
-  <header class="site-header" id="top">
-    <div class="header-wrap wrap">
-      <a class="site-logo" href="#top" aria-label="BEDROCK STRATA">
-        <img src="assets/strata-mark.svg" width="36" height="36" alt="">
-        <span class="site-logo-text">BEDROCK<span>STRATA</span></span>
-      </a>
-      <nav class="main-nav" id="mainNav" aria-label="Table of contents">
-        <a id="navPreface" href="#preface">序文</a>
-        <a id="navLandscape" href="#landscape">第1章</a>
-        <a id="navCreatures" href="#creatures">第2章</a>
-        <a id="navRelics" href="#relics">第3章</a>
-      </nav>
-      <div class="header-actions">
-        <a class="sister-link" href="../">✳ ENEND ↗</a>
-        <div class="lang-controls" role="group" aria-label="Language / 言語">
-          <button type="button" class="lang-button is-active" data-lang="ja" aria-pressed="true">🇯🇵 <span>日本語</span></button>
-          <button type="button" class="lang-button" data-lang="en" aria-pressed="false">🇬🇧 <span>EN</span></button>
-        </div>
-        <button class="menu-trigger" type="button" id="menuButton" aria-label="Toggle menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
-      </div>
-    </div>
-  </header>
-
-  <main id="main">
-    <section class="hero wrap hero-manuscript">
-      <div class="hero-copy">
-        <p class="micro-line"><span class="pulse-dot"></span> <span id="heroEyebrow">COMPENDIUM OF THE ABYSS</span></p>
-        <h1>BEDROCK <span>STRATA<span class="title-cross">+</span></span></h1>
-        <p class="hero-subtitle" id="subtitle">攻略ガイド：深淵の博物誌</p>
-        <p class="hero-lead" id="heroLine">答えは無ではない。</p>
-        <div class="hero-actions">
-          <a class="action action-primary" href="#preface"><span id="jumpText">本文を読む</span> <span aria-hidden="true">↓</span></a>
-          <a class="action action-outline" href="../">ENEND <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="art-index">COMPENDIUM <span>OF THE ABYSS</span></div>
-        <div class="cutaway">
-          <div class="cut-surface"><span class="ground-sky"></span><span class="ground-silhouette"></span><span class="ground-grass"></span></div>
-          <div class="cut-stone"><span class="etched-line l1"></span><span class="etched-line l2"></span><span class="etched-line l3"></span><span class="rock fleck-one"></span><span class="rock fleck-two"></span><span class="rock fleck-three"></span></div>
-          <div class="cut-archive">
-            <span class="archive-grid"></span><span class="rift-glow"></span>
-            <div class="artifact specimen-a"><img src="assets/glowing_obsidian.png" alt=""></div>
-            <div class="artifact specimen-b"><img src="assets/old_cloth.png" alt=""></div>
-            <div class="artifact specimen-c"><img src="assets/reactor.png" alt=""></div>
-            <div class="artifact specimen-d"><img src="assets/missing_texture.png" alt=""></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="chapter chapter-prologue" id="preface">
-      <div class="wrap prose-grid">
-        <aside class="section-rail" aria-hidden="true"><span class="chapter-num">00 / PREFACE</span><span class="rail-dash"></span></aside>
-        <article class="chapter-copy">
-          <span class="eyebrow">PREFACE</span>
-          <h2 id="prefaceTitle">序文：世界と世界の「隙間」には何があるのか？</h2>
-          <div class="chapter-text" id="prefaceText"></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="chapter terrain-chapter" id="landscape">
-      <div class="wrap prose-grid">
-        <aside class="section-rail" aria-hidden="true"><span class="chapter-num">01 / LANDSCAPES</span><span class="rail-dash"></span></aside>
-        <article class="chapter-copy">
-          <span class="eyebrow">CHAPTER 01</span>
-          <h2 id="landscapeTitle">第1章：折り重なる不条理な大地</h2>
-          <div class="chapter-text" id="landscapeText"></div>
-          <div class="terrain-mosaic" aria-hidden="true">
-            <img src="assets/old_cloth.png" alt="">
-            <img src="assets/moon.png" alt="">
-            <img src="assets/missing_texture.png" alt="">
-            <img src="assets/glowing_obsidian.png" alt="">
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="chapter bestiary-chapter" id="creatures">
-      <div class="wrap prose-grid">
-        <aside class="section-rail" aria-hidden="true"><span class="chapter-num">02 / DENIZENS</span><span class="rail-dash"></span></aside>
-        <article class="chapter-copy">
-          <span class="eyebrow">CHAPTER 02</span>
-          <h2 id="creaturesTitle">第2章：消去されたはずの住人たちと深淵の主たち</h2>
-          <div class="chapter-text" id="creaturesText"></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="chapter relic-chapter" id="relics">
-      <div class="wrap">
-        <div class="prose-grid">
-          <aside class="section-rail" aria-hidden="true"><span class="chapter-num">03 / RELICS</span><span class="rail-dash"></span></aside>
-          <article class="chapter-copy">
-            <span class="eyebrow">CHAPTER 03</span>
-            <h2 id="relicsTitle">第3章：発掘素材と金床の秘儀</h2>
-            <div class="chapter-text"><p id="relicsIntro"></p></div>
-          </article>
-        </div>
-        <div class="relic-grid relic-grid-lydia" id="relicGrid"></div>
-        <p class="relic-ending" id="otherText"></p>
-      </div>
-    </section>
-
-    <footer class="lydia-footer">
-      <div class="wrap footer-row">
-        <a class="site-logo" href="#top"><img src="assets/strata-mark.svg" width="34" height="34" alt=""><span class="site-logo-text">BEDROCK<span>STRATA</span></span></a>
-        <div class="footer-links">
-          <a id="enendFooter" href="../">ENEND Mob図鑑へ ↗</a>
-          <a id="backTop" href="#top">先頭に戻る ↑</a>
-        </div>
-      </div>
-    </footer>
-  </main>
+<a class="skip-link" href="#main" id="skipLink">本文へ</a>
+<header class="site-header" id="top">
+<div class="bar">
+  <a class="site-logo" href="#top">BEDROCK <span>STRATA</span></a>
+  <nav aria-label="Guide navigation" id="mainNav">
+    <a href="#guide" id="navGuide">本文</a>
+    <a href="#relics" id="navRelics">発掘素材</a>
+    <a href="#dragon" id="navDragon">竜鱗</a>
+    <a href="#nightmare" id="navNightmare">被膜</a>
+    <a href="#repair" id="navRepair">修繕</a>
+  </nav>
+  <div class="right-nav"><a class="enend" href="../">ENEND ↗</a>
+  <div class="langs" role="group" aria-label="Language / 言語">
+    <button type="button" data-lang="ja" aria-pressed="true">日本語</button>
+    <button type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+  </div>
+</div>
+</header>
+<main id="main">
+<article class="manuscript">
+<header class="main-title">
+  <h1>BEDROCK STRATA</h1>
+  <p id="subtitle">攻略ガイド：深淵の博物誌</p>
+</header>
+<div class="story" id="guide">
+  <div id="prefaceText"></div>
+  <div id="landscapeText"></div>
+  <div id="creaturesText"></div>
+</div>
+<section class="effects" id="relics">
+  <h2 id="relicsTitle">発掘素材による特殊能力</h2>
+  <p id="relicsIntro"></p>
+  <dl id="relicList"></dl>
+</section>
+<section class="effects" id="dragon">
+  <h2 id="dragonTitle">竜鱗の鍛造術</h2>
+  <p id="dragonIntro"></p>
+  <dl id="dragonList"></dl>
+</section>
+<section class="effects" id="nightmare">
+  <h2 id="nightmareTitle">悪夢の被膜と夜の呪力</h2>
+  <p id="nightmareIntro"></p>
+  <dl id="nightmareList"></dl>
+</section>
+<section class="effects" id="repair">
+  <h2 id="repairTitle">特殊修繕の秘術</h2>
+  <dl id="repairList"></dl>
+</section>
+<p class="closing" id="otherText"></p>
+</article>
+</main>
+<footer class="footer"><a href="../" id="enendFooter">ENEND Mob図鑑へ ↗</a><a href="#top" id="backTop">先頭に戻る ↑</a></footer>
 </body>
 </html>
