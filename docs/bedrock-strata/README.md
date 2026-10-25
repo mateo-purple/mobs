@@ -1,36 +1,20 @@
-# BEDROCK STRATA: Lydia's original manuscript
+# BEDROCK STRATA / 深淵の博物誌
 
-This public bilingual field guide now displays **only the Japanese and
-English material supplied by Lydia in the user's messages**. The earlier
-assistant-added 33-terrain encyclopaedia, Mob species descriptions, boss
-combat strategies, extra item catalogue, and self-written ENEND promo copy
-were specifically removed at the user's request.
+Official companion guide to ENEND at https://mateo-purple.github.io/mobs/bedrock-strata/.
 
-## Visible copy
+Content is strictly based on Lydia's Japanese/English manuscripts supplied in
+the author's conversation: seven introductory narrative paragraphs, five
+excavated relic descriptions (including consumable Ruby), four dragon-scale
+enchantments, eight Nightmare Membrane enchantments, and the Shining Obsidian
+crafting-table repair. No extra story, mob entries, chapter-number labels,
+AI-generated pictures, speculative item descriptions, or fabricated strategy
+notes appear.
 
-1. Preface / 序文: three paragraphs of original text
-2. Chapter 1 / 第1章: two original terrain/abyss paragraphs
-3. Chapter 2 / 第2章: two original creature/boss paragraphs
-4. Chapter 3 / 第3章: the original relic introduction, the six named
-   material/effect pairs, and original closing sentence
+English and Japanese can be switched on the page. The two guides link to
+one another through the ENEND header/footer link. Language preference uses
+the same `enend.lang` setting.
 
-The final supplied Japanese text says Shining Obsidian repairs through
-**the crafting table**, which also agrees with the actual mod recipe.
-The supplied English draft said 'anvil' in this one line and is therefore
-corrected to 'crafting table'. No additional gameplay lore is introduced.
-
-The original site at `../` (ENEND) has only an ordinary navigation link to
-this companion; the assistant's self-written promotional description was
-removed. Language selection is shared via `enend.lang`.
-
-Source code and texture assets of the private Minecraft MOD are not hosted
-here, only the user-approved public specimen images. No private source
-files, game saves, credentials, or JARs are published.
-
-## Validation
-
-`python qa_check.py` proves that the manuscript contains exactly the
-original 4 editorial sections, Japanese/English content, 6 approved relic
-entries, reciprocal navigation and no assistant-invented encyclopaedia
-sections. Browser QA checks phone/desktop layout, actual language toggling,
-and absence of missing images.
+No artwork assets or other external JavaScript libraries are included in this
+text-only redesign. Browser QA checked 1440px desktop, 390px mobile,
+all seven story paragraphs, all 18 listed materials/enchantments, no
+horizontal overflow, language switching, and zero images.
