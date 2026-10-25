@@ -11,7 +11,7 @@
   };
   const t = {
     ja: {
-      skip:'本文へ移動',navAbout:'紹介',aboutButton:'MODについて',mobdexButton:'Mob図鑑',heroTopLead:'すべてのモンスターが、あなたの敵になりたいわけじゃない。',navDex:'Mob図鑑',navCommands:'遊び方',navTrade:'取引',navReference:'資料',
+      skip:'本文へ移動',navAbout:'紹介',aboutButton:'MODについて',mobdexButton:'Mob図鑑',heroTopLead:'すべてのモンスターが、あなたの敵になりたいわけじゃない。',navDex:'Mob図鑑',navCommands:'遊び方',navTrade:'取引',navReference:'資料',strataNav:'STRATA ↗',strataHeading:'BEDROCK STRATA：深淵の博物誌',strataBody:'岩盤の下に眠る33の地形、旧世代のMob、二大ボス、忘れられた発掘品。もうひとつの冒険を覗いてみよう。',strataLink:'BEDROCK STRATAの攻略ガイドへ',
       heroEyebrow:'THE OFFICIAL MONSTER FIELD GUIDE',heroTitle1:'ENEND',heroTitle2:'Friends Among Enemies',
       heroLead:'必ずしも、すべてのモンスターが敵とは限らない。アイテムを贈って信頼を得れば、かつて恐れた相手が旅を共にする仲間になるかもしれません。',
       heroExplore:'仲間を探す',heroLearn:'遊び方を見る',metricKinds:'関連するMob',metricFriends:'直接仲間化',metricTruce:'間接加入・停戦',
@@ -46,7 +46,7 @@
       release:'対応版'
     },
     en: {
-      skip:'Skip to content',navAbout:'Description',aboutButton:'About the mod',mobdexButton:'Mobdex',heroTopLead:'Not every monster wants to be your enemy.',navDex:'Mobdex',navCommands:'How to Play',navTrade:'Trading',navReference:'Reference',
+      skip:'Skip to content',navAbout:'Description',aboutButton:'About the mod',mobdexButton:'Mobdex',heroTopLead:'Not every monster wants to be your enemy.',navDex:'Mobdex',navCommands:'How to Play',navTrade:'Trading',navReference:'Reference',strataNav:'STRATA ↗',strataHeading:'BEDROCK STRATA: Compendium of the Abyss',strataBody:'Explore 33 buried landscapes, creatures from past Minecraft builds, two dangerous bosses and relics forgotten by history.',strataLink:'Visit the BEDROCK STRATA guide',
       heroEyebrow:'THE OFFICIAL MONSTER FIELD GUIDE',heroTitle1:'Your enemy,',heroTitle2:'your next friend.',
       heroLead:'Not every monster wants to be your enemy. Earn their trust with gifts and those you once feared may become your most unexpected companions.',
       heroExplore:'Explore the Mobdex',heroLearn:'How to Play',metricKinds:'Featured creature types',metricFriends:'Direct recruits',metricTruce:'Indirect / truce',
