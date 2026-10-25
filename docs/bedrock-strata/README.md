@@ -1,25 +1,36 @@
-# BEDROCK STRATA Field Guide (companion to ENEND)
+# BEDROCK STRATA: Lydia's original manuscript
 
-This is an entirely static, bilingual Japanese/English guide in the public GitHub Pages repository `mateo-purple/mobs`, intended at:
+This public bilingual field guide now displays **only the Japanese and
+English material supplied by Lydia in the user's messages**. The earlier
+assistant-added 33-terrain encyclopaedia, Mob species descriptions, boss
+combat strategies, extra item catalogue, and self-written ENEND promo copy
+were specifically removed at the user's request.
 
-`https://mateo-purple.github.io/mobs/bedrock-strata/`
+## Visible copy
 
-The ENEND Mobdex remains at `/mobs/`. The pages link to each other; both use `enend.lang` in localStorage for persistent language selection. The page has no trackers or remote JS dependencies.
+1. Preface / 序文: three paragraphs of original text
+2. Chapter 1 / 第1章: two original terrain/abyss paragraphs
+3. Chapter 2 / 第2章: two original creature/boss paragraphs
+4. Chapter 3 / 第3章: the original relic introduction, the six named
+   material/effect pairs, and original closing sentence
 
-## Canon and sources
+The final supplied Japanese text says Shining Obsidian repairs through
+**the crafting table**, which also agrees with the actual mod recipe.
+The supplied English draft said 'anvil' in this one line and is therefore
+corrected to 'crafting table'. No additional gameplay lore is introduced.
 
-Editorial opening prose from the user-provided bilingual BEDROCK STRATA manuscript, checked against the privately maintained VOID ARCHIVE alpha.12 build commit `ce7b3c3` (2026-10-25). The English manuscript's obsolete anvil repair sentence was corrected to crafting grid to match the latest Japanese manuscript and actual in-game `glowing_obsidian_full_repair` recipe.
+The original site at `../` (ENEND) has only an ordinary navigation link to
+this companion; the assistant's self-written promotional description was
+removed. Language selection is shared via `enend.lang`.
 
-All 17 copied pixel textures are real mod assets found inside the user's own local VOID ARCHIVE working directory at site creation time, not generative-AI imagery. The `human` / `giant` / `killer_bunny` species without trustworthy art use textual silhouettes instead. Existing ENEND mob renders are reused by relative URL, with species-specific notes clarifying that classic textures may vary.
+Source code and texture assets of the private Minecraft MOD are not hosted
+here, only the user-approved public specimen images. No private source
+files, game saves, credentials, or JARs are published.
 
-The mod's internal identifier is `voidarchive`. BEDROCK STRATA is the field-guide heading supplied by the user; do not mistake it for a changed runtime mod ID. Avoid asserting that the fictional 'world between Nether and Overworld' is a real separate Minecraft dimension. No private mod source code or binaries are included in the published site.
+## Validation
 
-## Site structure
-
-- `index.html`: semantic sections and authored bilingual manuscript structure
-- `styles.css`: own warm-copper / violet archive theme, responsive
-- `content.js`: keyed Japanese/English strings, full lists for biomes, mobs, relics
-- `app.js`: language switch, region filters, Mob search/filter, disclosures, mobile nav
-- `assets/`: mod texture specimens and local SVG favicon
-
-Minecraft 26.3, NeoForge 26.3.0.83, Java 25. This guide describes alpha.12 candidate gameplay. Gameplay validation is separate; do not present as an official Mojang/Microsoft site.
+`python qa_check.py` proves that the manuscript contains exactly the
+original 4 editorial sections, Japanese/English content, 6 approved relic
+entries, reciprocal navigation and no assistant-invented encyclopaedia
+sections. Browser QA checks phone/desktop layout, actual language toggling,
+and absence of missing images.

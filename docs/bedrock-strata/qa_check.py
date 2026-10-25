@@ -1,62 +1,63 @@
 #!/usr/bin/env python3
-"""No-dependency static site QA: bilingual copy, local art, ENEND backlink."""
+"""Check that the public site contains Lydia's manuscript, not extra lore."""
 from pathlib import Path
 from html.parser import HTMLParser
-import subprocess,json,re
+import json,subprocess
 ROOT=Path(__file__).resolve().parent
 DOCS=ROOT.parent
 class Scan(HTMLParser):
     def __init__(self):
-        super().__init__()
-        self.keys=set();self.placeholders=set();self.ids=set();self.hrefs=[];self.images=[]
-    def handle_starttag(self,name,attrs):
+        super().__init__();self.ids=set();self.links=[];self.images=[]
+    def handle_starttag(self,tag,attrs):
         a=dict(attrs)
-        if "data-t" in a:self.keys.add(a["data-t"])
-        if "data-placeholder" in a:self.placeholders.add(a["data-placeholder"])
-        if "id" in a:self.ids.add(a["id"])
-        if name=="a" and "href" in a:self.hrefs.append(a["href"])
-        if name=="img" and "src" in a:self.images.append(a["src"])
+        if a.get("id"):self.ids.add(a["id"])
+        if tag=="a" and a.get("href"):self.links.append(a["href"])
+        if tag=="img" and a.get("src"):self.images.append(a["src"])
     handle_startendtag=handle_starttag
 def node(args):
-    r=subprocess.run(["node",*args],capture_output=True,text=True,encoding="utf-8")
-    if r.returncode:raise AssertionError(r.stderr)
-    return r.stdout
-for js in ["content.js","app.js",str(DOCS/"app.js")]:
-    node(["--check",str(ROOT/js) if js!="app.js" or js=="app.js" else str(ROOT/js)])
-# above checks site content and app. ENEND app separately below
-node(["--check",str(DOCS/"app.js")])
-code="const fs=require('fs'),vm=require('vm'),ctx={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),ctx);console.log(JSON.stringify(ctx.window.BS_CONTENT));"
-content=json.loads(node(["-e",code,str(ROOT/"content.js")]))
-texts=content["t"]
-assert set(texts["ja"])==set(texts["en"]),"Translations missing entries"
-assert len(content["terrain"])==6 and sum(x["count"] for x in content["terrain"])==33
-assert len(content["mobs"])==8
-assert len(content["relics"])==6
-assert len(content["artifacts"])==6
-scan=Scan();scan.feed((ROOT/"index.html").read_text(encoding="utf-8"))
-assert scan.keys <= set(texts["ja"]),f"Missing page translation keys: {scan.keys-set(texts['ja'])}"
-assert scan.placeholders <= set(texts["ja"]),f"Missing placeholders: {scan.placeholders-set(texts['ja'])}"
-for href in scan.hrefs:
-    if href.startswith("#"):assert href[1:] in scan.ids,href
-    elif not href.startswith(("https://","http://","mailto:")):
-        resolved=(ROOT/href).resolve()
-        assert resolved.exists(),f"Broken internal href: {href}"
+    p=subprocess.run(["node",*args],capture_output=True,text=True,encoding="utf-8")
+    assert p.returncode==0,p.stderr
+    return p.stdout
+for p in [ROOT/"content.js",ROOT/"app.js",DOCS/"app.js"]:
+    node(["--check",str(p)])
+program="""const fs=require('fs'),vm=require('vm'),ctx={window:{}};vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),ctx);console.log(JSON.stringify(ctx.window.BS_CONTENT));"""
+books=json.loads(node(["-e",program,str(ROOT/"content.js")]))
+assert set(books)=={"ja","en"}
+for lang in ("ja","en"):
+    t=books[lang]
+    assert len(t["preface"])==3
+    assert len(t["landscape"])==2
+    assert len(t["creatures"])==2
+    assert len(t["relics"])==6
+    assert t["other"] and t["relicsIntro"]
+    assert [x["id"] for x in t["relics"]]==["ruby","gear","rose","feather","reactor","glowing_obsidian"]
+assert "作業台" in books["ja"]["relics"][-1]["effect"]
+assert "crafting table" in books["en"]["relics"][-1]["effect"]
+assert "金床" in books["ja"]["relicsIntro"] and "anvil" in books["en"]["relicsIntro"]
+assert books["ja"]["creaturesTitle"].startswith("第2章")
+assert books["en"]["creaturesTitle"].startswith("Chapter 2")
+for language in ("ja","en"):
+    for card in books[language]["relics"]:
+        assert card["effect"].strip() and card["name"].strip()
+        assert (ROOT/"assets"/(card["image"]+".png")).is_file()
+html=(ROOT/"index.html").read_text(encoding="utf-8")
+scan=Scan();scan.feed(html)
+for fragment in scan.links:
+    if fragment.startswith("#"):
+        assert fragment[1:] in scan.ids,fragment
+    elif not fragment.startswith(("https://","http://","mailto:")):
+        assert (ROOT/fragment).resolve().exists(),"Missing internal link "+fragment
 for image in scan.images:
-    assert (ROOT/image).resolve().is_file(),f"Broken static image {image}"
-for entry in content["mobs"]:
-    if entry["art"]:assert (ROOT/entry["art"]).resolve().is_file(),f"Missing mob render {entry['art']}"
-for entry in content["relics"]:
-    assert (ROOT/"assets"/(entry["image"]+".png")).is_file()
-for entry in content["artifacts"]:
-    if entry["image"]:assert (ROOT/"assets"/(entry["image"]+".png")).is_file()
-homepage=(DOCS/"index.html").read_text(encoding="utf-8")
-for required in ["bedrock-strata/","strataHeading","strataLink","strataNav"]:
-    assert required in homepage, f"ENEND not linked: {required}"
-js=(DOCS/"app.js").read_text(encoding="utf-8")
-for required in ["strataHeading","strataBody","strataLink"]:
-    assert js.count(required)>=2,"Not bilingual on the ENEND side: "+required
+    assert (ROOT/image).is_file(),"Missing illustration "+image
+for banned in ("terrainGrid","terrainTabs","mobGrid","mobSearch","boss-grid",
+               "artifactGrid","relic-count","bossStrategy","relicIntroGuide"):
+    assert banned not in html,"Unrequested extra encyclopedia entry still shown: "+banned
+assert "terrain:" not in (ROOT/"content.js").read_text(encoding="utf-8")
+assert "mobs:" not in (ROOT/"content.js").read_text(encoding="utf-8")
+assert "artifacts:" not in (ROOT/"content.js").read_text(encoding="utf-8")
+assert "id=\"companion-guide\"" not in (DOCS/"index.html").read_text(encoding="utf-8")
+assert 'href="bedrock-strata/"' in (DOCS/"index.html").read_text(encoding="utf-8")
+assert 'href="../"' in html
 assert "enend.lang" in (ROOT/"app.js").read_text(encoding="utf-8")
-assert "作業台" in texts["ja"]["repairBody"] and "crafting grid" in texts["en"]["repairBody"].lower()
-assert "anvil" in texts["ja"]["repairBody"].lower() or "金床" in texts["ja"]["repairBody"]
-assert "not an anvil recipe" in texts["en"]["repairBody"].lower()
-print("BEDROCK_SITE_QA_PASS",len(scan.keys),"UI translations, 33 terrains, 8 mobs, 6 relics, 6 artifacts, all images and ENEND crosslinks")
+assert (ROOT/"manuscript.css").is_file()
+print("LYDIA_MANUSCRIPT_ONLY_PASS bilingual 3+2+2 chapters, six original relic descriptions, ENEND links, no invented intros")
