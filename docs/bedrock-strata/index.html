@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10121a">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="BEDROCK STRATA 深淵の博物誌。Minecraftの岩盤下に眠る33の地形、歴史的Mob、ナイトメア・ファントム、レッドドラゴン、発掘素材の日本語・英語対応ガイド。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BEDROCK STRATA">
+  <meta property="og:title" content="BEDROCK STRATA | Compendium of the Abyss">
+  <meta property="og:description" content="Beyond the bedrock, history did not disappear. Explore 33 buried landscapes, lost mobs, dangerous bosses and forgotten relics.">
+  <link rel="canonical" href="https://mateo-purple.github.io/mobs/bedrock-strata/">
+  <link rel="icon" type="image/svg+xml" href="assets/strata-mark.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="content.js" defer></script>
+  <script src="app.js" defer></script>
+  <title>BEDROCK STRATA | 深淵の博物誌</title>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-t="skip">本文へ移動</a>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <div class="header-wrap wrap">
+      <a class="site-logo" href="#top" aria-label="BEDROCK STRATA home">
+        <img src="assets/strata-mark.svg" alt="" width="36" height="36">
+        <span class="site-logo-text">BEDROCK<span>STRATA</span></span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Page navigation">
+        <a href="#world" data-t="navWorld">世界</a>
+        <a href="#terrain" data-t="navTerrain">地形</a>
+        <a href="#bestiary" data-t="navMob">Mob</a>
+        <a href="#bosses" data-t="navBoss">ボス</a>
+        <a href="#relics" data-t="navRelics">発掘品</a>
+      </nav>
+      <div class="header-actions">
+        <a class="sister-link" href="../" title="ENEND companion guide"><span class="sister-spark">✳</span> ENEND <span aria-hidden="true">↗</span></a>
+        <div class="lang-controls" role="group" aria-label="Language">
+          <button type="button" class="lang-button is-active" data-lang="ja" aria-pressed="true">🇯🇵 <span>日本語</span></button>
+          <button type="button" class="lang-button" data-lang="en" aria-pressed="false">🇬🇧 <span>EN</span></button>
+        </div>
+        <button class="menu-trigger" type="button" id="menuButton" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="heroHeading">
+      <div class="hero-copy">
+        <div class="micro-line"><span class="pulse-dot"></span> <span data-t="heroOverline">ARCHIVE FILE 02 / 地下探索記録</span> <span class="separator">/</span> <span class="build-chip">MINECRAFT 26.3</span></div>
+        <h1 id="heroHeading">BEDROCK <span>STRATA<span class="title-cross">+</span></span></h1>
+        <p class="hero-subtitle"><span data-t="heroSubtitle">深淵の博物誌</span><span class="subtitle-rule"></span> COMPENDIUM OF THE ABYSS</p>
+        <p class="hero-lead" data-t="heroLead">岩盤の下で、歴史は消えていなかった。</p>
+        <p class="hero-description" data-t="heroDescription">神々に捨てられた地形、忘れ去られた住人、二度と現れないはずの遺物。ポータルを通らず、通常世界の底からそのすべてに触れる。</p>
+        <div class="hero-actions">
+          <a class="action action-primary" href="#world"><span data-t="enter">深淵へ潜る</span><span aria-hidden="true">↓</span></a>
+          <a class="action action-outline" href="../"><span data-t="visitEnend">もう一つの世界：ENEND</span><span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-trace">
+          <span><strong>33</strong><small data-t="statRegions">地形種</small></span>
+          <span><strong>03</strong><small data-t="statLayers">1ページの地層</small></span>
+          <span><strong>-256</strong><small data-t="statBoundary">奈落境界 Y</small></span>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Stylized strata cross-section made from real in-game textures">
+        <div class="art-glow" aria-hidden="true"></div>
+        <div class="art-index">FIG.01 <span>CONTINUOUS DEPTH</span></div>
+        <div class="cutaway">
+          <div class="cut-surface"><span class="ground-sky"></span><span class="ground-silhouette"></span><span class="ground-grass"></span></div>
+          <div class="cut-stone">
+            <span class="etched-line l1"></span><span class="etched-line l2"></span><span class="etched-line l3"></span>
+            <span class="rock fleck-one"></span><span class="rock fleck-two"></span><span class="rock fleck-three"></span>
+            <div class="bedrock-mark"><span>BEDROCK</span><strong>Y = -256</strong></div>
+          </div>
+          <div class="cut-archive">
+            <div class="rift-glow"></div>
+            <div class="artifact specimen-a"><img src="assets/glowing_obsidian.png" alt="" /></div>
+            <div class="artifact specimen-b"><img src="assets/old_cloth.png" alt="" /></div>
+            <div class="artifact specimen-c"><img src="assets/reactor.png" alt="" /></div>
+            <div class="artifact specimen-d"><img src="assets/missing_texture.png" alt="" /></div>
+            <span class="archive-grid"></span>
+            <span class="vertical-mark">HISTORICAL STRATA / Ⅰ–Ⅲ</span>
+          </div>
+        </div>
+        <div class="art-caption"><span data-t="heroArtCaption">実ゲーム素材を使用した地層イメージ</span><span>Y ↓</span></div>
+      </div>
+    </section>
+
+    <section class="chapter chapter-prologue" id="world">
+      <div class="wrap prose-grid">
+        <div class="section-rail"><span class="chapter-num">00 / PREFACE</span><span class="rail-dash"></span><span data-t="prefaceRail">発見されなかった世界</span></div>
+        <div class="chapter-copy">
+          <span class="eyebrow" data-t="prefaceTag">THE IMPOSSIBLE SPACE</span>
+          <h2 data-t="prefaceHeading">世界と世界の「隙間」には何があるのか？</h2>
+          <div class="chapter-text">
+            <p class="drop-cap" data-t="prefaceP1">一般的な冒険者の認識では、この宇宙は3つの階層で成り立っている。天上のエンド、我々が暮らすオーバーワールド、そして最下層の灼熱地獄ネザーだ。</p>
+            <p data-t="prefaceP2">しかし、もしオーバーワールドの底の岩盤を突き破り、ポータルを使わず生身のまま降りていけたら？　そこにあるのは虚無ではない。ファントムが巣くい、捨てられた地形が堆積した異常な世界だ。</p>
+            <p data-t="prefaceP3">神々が世界を創り変える過程で歴史の表舞台から消し去ったはずの風景が、地下で折り重なっている。常識的な気候区分も、時代の境界も、ここでは意味を失う。</p>
+          </div>
+          <div class="rule-note"><span class="rule-icon">◎</span><div><strong data-t="worldFactTitle">世界の仕組み</strong><p data-t="worldFact">奈落は別ディメンションではありません。通常世界のY=-256から下に連続し、さらに深く進むと同じディメンションの次の深度ページへ移動します。</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter terrain-chapter" id="terrain">
+      <div class="wrap">
+        <div class="section-topline"><span class="chapter-num">01 / TERRAIN ATLAS</span><span class="chapter-count">33 <span data-t="envLabel">環境</span></span></div>
+        <div class="section-heading split-heading"><div><span class="eyebrow" data-t="terrainTag">NO MAP REMEMBERS THIS PLACE</span><h2 data-t="terrainHeading">折り重なる<br>不条理な大地</h2></div><p data-t="terrainIntro">見慣れた平原を抜けた次の瞬間、旧世紀の森、奇妙な断崖、浮遊島、そしてネザーの赤い地形が現れる。歴史の異なる33種類の地形が、ひとつの深淵を形成している。</p></div>
+        <div id="terrainTabs" class="tab-strip" role="tablist" aria-label="Terrain families"></div>
+        <div id="terrainGrid" class="terrain-grid" aria-live="polite"></div>
+        <div class="reset-explainer"><div class="reset-code">RESET <strong>≠</strong> DELETE</div><div><h3 data-t="resetTitle">探索者が帰還すると、地下は生まれ変わる。</h3><p data-t="resetBody">全員が地上に戻ると地下地形の世代が切り替わり、古い自然地形は段階的に再生成されます。プレイヤーの建築、収納物、持ち込んだMobなどは保護されます。保護対象があるチャンクは再生成されない場合があります。</p></div></div>
+      </div>
+    </section>
+
+    <section class="chapter bestiary-chapter" id="bestiary">
+      <div class="wrap">
+        <div class="section-topline"><span class="chapter-num">02 / FIELD BESTIARY</span><span class="chapter-count">08 <span data-t="specimensLabel">観察対象</span></span></div>
+        <div class="section-heading split-heading"><div><span class="eyebrow" data-t="bestiaryTag">LIFE FORMS FROM LOST BUILDS</span><h2 data-t="bestiaryHeading">消去されたはずの<br>住人たち</h2></div><p data-t="bestiaryIntro">昔のクリーパーは死んでから爆発する。スケルトンは最後に矢をばらまき、人間は何事もなかったように跳ね回る。現代の図鑑では読めない生態を記録する。</p></div>
+        <div class="mob-tools"><label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only" data-t="searchLabel">Mob検索</span><input id="mobSearch" type="search" autocomplete="off" data-placeholder="searchPlaceholder" placeholder="Mob名や特徴を検索"></label><div class="filter-buttons" id="mobFilters" role="group" aria-label="Mob category"></div></div>
+        <div class="bestiary-grid" id="mobGrid" aria-live="polite"></div>
+        <p class="empty-results" id="mobEmpty" hidden data-t="emptyResults">一致するMobが見つかりませんでした。</p>
+      </div>
+    </section>
+
+    <section class="chapter boss-chapter" id="bosses">
+      <div class="wrap">
+        <div class="section-topline"><span class="chapter-num">03 / ABYSSAL LORDS</span><span class="chapter-count">02 <span data-t="bossesLabel">主たち</span></span></div>
+        <div class="section-heading"><span class="eyebrow" data-t="bossTag">SOMETHING ELSE LIVES BELOW</span><h2 data-t="bossHeading">深淵を統べる者</h2></div>
+        <div class="boss-grid">
+          <article class="boss-card dragon-boss">
+            <div class="boss-halo"></div><span class="boss-index">ENTITY FILE 001 / RED</span>
+            <div class="boss-emblem"><img src="assets/dragon_scale.png" alt="" aria-hidden="true"><span>DRAGON</span></div>
+            <h3 data-t="dragonName">レッドドラゴン</h3><p data-t="dragonDesc">大空を旋回し、炎と衝撃波、岩盤の欠片を武器にする赤い竜。周囲から最大15個のブロックを収集し、盾として纏ったり、破壊的な一斉投擲を放ったりする。</p>
+            <div class="boss-meta"><span>HP 200</span><span data-t="dragonDrop">竜の鱗 8–12個</span></div>
+            <details class="boss-detail"><summary data-t="bossStrategy">攻撃と攻略の詳細</summary><p data-t="dragonStrategy">低空突進、ブレス、火炎弾幕、衝撃波に警戒。ブロックの個別投擲は攻撃で跳ね返せる。まとまった一斉投擲は反射できないため回避すること。纏ったTNTは火の付いた投擲物によって爆発する場合がある。</p></details>
+          </article>
+          <article class="boss-card nightmare-boss">
+            <div class="boss-halo"></div><span class="boss-index">ENTITY FILE 002 / NIGHT</span>
+            <div class="boss-emblem nightmare-emblem"><span class="boss-eye">◉</span><span>PHANTOM</span></div>
+            <h3 data-t="nightmareName">ナイトメア・ファントム</h3><p data-t="nightmareDesc">地下に長く留まった探索者の前に現れる巨大な亡霊。暗視なしでは姿を捉えにくく、普通の攻撃が通用しない。倒しても分裂し、集まり直して再生する。</p>
+            <div class="boss-meta"><span>HP 100 <small>START</small></span><span data-t="nightmareTime">地下滞在と行動で出現</span></div>
+            <details class="boss-detail"><summary data-t="bossStrategy">攻撃と攻略の詳細</summary><p data-t="nightmareStrategy">アンデッド特効、燃える矢、光の矢などが有効。目付近の命中でスタンする。HPを削ると多数のハートに分裂するため、再集合前にハートを減らし、最大HPを5まで下げて最終決着を狙う。</p></details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter relic-chapter" id="relics">
+      <div class="wrap">
+        <div class="section-topline"><span class="chapter-num">04 / EXCAVATED RELICS</span><span class="chapter-count">06 <span data-t="relicCountLabel">主要素材</span></span></div>
+        <div class="section-heading split-heading"><div><span class="eyebrow" data-t="relicTag">THE PRICE OF KNOWLEDGE</span><h2 data-t="relicHeading">発掘素材と<br>金床の秘儀</h2></div><p data-t="relicIntro">奥底の宝箱に眠る遺物こそ、命知らずの探索者にとって最大の報酬。装備と素材を金床で組み合わせれば、通常とは異なる固有エンチャントを付けられる。</p></div>
+        <div class="recipe-intro"><span class="recipe-sign">⊞</span><div><strong data-t="anvilHeading">金床で装備を強化</strong><p data-t="anvilBody">左に武器・防具、右に素材1個。通常の特殊強化コストは経験値3レベル。ルビーの能力は、付与後の金床使用からコストを半分にする。</p></div><span class="recipe-chip">XP 03</span></div>
+        <div id="relicGrid" class="relic-grid"></div>
+        <div class="craft-banner"><div class="craft-display"><img src="assets/glowing_obsidian.png" alt="Shining Obsidian texture" width="76" height="76"><span>+</span><div class="gear-symbol">▱</div><span>=</span><div class="repaired-symbol">✦</div></div><div><span class="eyebrow" data-t="repairTag">ONE EXCEPTION / CRAFTING</span><h3 data-t="repairHeading">輝く黒曜石だけは、作業台で完全修理。</h3><p data-t="repairBody">損傷した武器・防具と輝く黒曜石1個を作業台で組み合わせると、名前やエンチャントを失わずに耐久値が完全回復します。金床ではありません。</p></div></div>
+      </div>
+    </section>
+
+    <section class="chapter artifacts-chapter" id="artifacts">
+      <div class="wrap">
+        <div class="section-topline"><span class="chapter-num">05 / UNUSUAL OBJECTS</span><span class="chapter-count" data-t="objectsLabel">埋もれた道具</span></div>
+        <div class="section-heading split-heading"><div><span class="eyebrow" data-t="objectsTag">NOT EVERYTHING HERE IS A WEAPON</span><h2 data-t="objectsHeading">異界のガラクタたち</h2></div><p data-t="objectsIntro">世界の残骸には、便利なものも、ただ奇妙なものもある。持ち帰りたくなる品ほど、地下深くに眠っている。</p></div>
+        <div id="artifactGrid" class="artifact-grid"></div>
+      </div>
+    </section>
+
+    <section class="final-chapter" id="field-notes">
+      <div class="wrap">
+        <div class="last-word"><span class="eyebrow" data-t="finalTag">RETURN PROTOCOL</span><h2 data-t="finalHeading">帰還するたび、<br>違う歴史が待っている。</h2><p data-t="finalBody">奈落に長居すると悪夢が目を覚ます。持ち帰れるものを見極め、戻る判断を忘れないこと。戻ってきた時、地下にはもう昨日と同じ地形は残っていないかもしれない。</p><a href="#top" class="action action-outline"><span data-t="backToTop">記録の先頭へ戻る</span><span>↑</span></a></div>
+        <div class="compat-panel"><span class="chapter-num">SYSTEM / COMPATIBILITY</span><dl><div><dt>Minecraft</dt><dd>Java Edition 26.3</dd></div><div><dt>Mod Loader</dt><dd>NeoForge 26.3.0.83+</dd></div><div><dt>Java</dt><dd>25</dd></div><div><dt data-t="buildLabel">対象版</dt><dd>alpha.12 <small data-t="buildStatus">最終検証候補</small></dd></div></dl><p data-t="compatNote">これはゲーム内世界観を含む非公式の攻略ガイドです。MODはMojang / Microsoftとは無関係です。実装値は更新で変更される場合があります。</p></div>
+      </div>
+    </section>
+
+    <section class="portal-bridge">
+      <div class="wrap portal-content"><span class="bridge-icon">✳</span><div><span class="eyebrow" data-t="portalOverline">TWO WORLDS / ONE ARCHIVE</span><h2>ENEND <small>×</small> BEDROCK STRATA</h2><p data-t="portalBody">敵のなかから仲間を見つける世界と、過去の世界を掘り起こす冒険。もう一つの公式図鑑にも訪れてみよう。</p></div><a href="../" class="action action-primary"><span data-t="portalAction">ENENDのMob図鑑へ</span><span>↗</span></a></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-main"><div class="footer-brand"><span>BEDROCK STRATA</span><small>COMPENDIUM OF THE ABYSS · SHISHITOUGARASHI</small></div><div class="footer-links"><a href="../">ENEND ↗</a><a href="#top">TOP ↑</a><a href="https://github.com/mateo-purple/mobs" target="_blank" rel="noopener">GITHUB ↗</a></div></div><div class="wrap footer-fine"><span data-t="footerNote">Minecraftファン制作の非公式ガイド。MojangおよびMicrosoftとは無関係です。</span><span>© 2026 BEDROCK STRATA / VOID ARCHIVE</span></div></footer>
+</body>
+</html>

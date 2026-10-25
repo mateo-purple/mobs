@@ -171,3 +171,19 @@ h1,h2,h3,h4{letter-spacing:-.02em;line-height:1.35}
  .trade-guide-details{padding:13px 14px;max-height:560px}
  .trade-entry{font-size:12px;padding:9px 0}
 }
+
+/* Cross-navigation to the companion field guide. Preserve the original ENEND UI. */
+.desktop-nav .companion-nav{color:#efb08e;white-space:nowrap;border-left:1px solid #46564b;padding-left:16px}
+.desktop-nav .companion-nav:hover{color:#ffddaa}
+.mobile-nav .companion-nav{color:#e7b18f;font-weight:800}
+.companion-feature{display:grid;grid-template-columns:220px 1fr;gap:45px;align-items:center;background:linear-gradient(105deg,#2c252a,#201e25 60%,#1a2520);border:1px solid #63524f;margin-top:52px;margin-bottom:75px;padding:38px 46px}
+.companion-art{position:relative;min-height:190px;display:flex;justify-content:center;align-items:center;border:1px solid #685750;background:repeating-linear-gradient(0deg,#2c2832 0 13px,#322b36 13px 27px)}
+.companion-art span{position:absolute;top:12px;left:15px;font:800 10px/1.25 'Space Grotesk',sans-serif;letter-spacing:.18em;color:#f1c4aa}
+.companion-art img{image-rendering:pixelated;box-shadow:0 18px 45px #0a070870}
+.companion-copy .companion-eyebrow{color:#d9b395;letter-spacing:.14em;font:700 10px 'Space Grotesk',sans-serif}
+.companion-copy h2{font-size:clamp(24px,3vw,37px);line-height:1.3;margin:12px 0;color:#f5e5d7}
+.companion-copy p{color:#c5b6b9;max-width:750px;font-size:13px;line-height:1.9}
+.companion-cta{margin-top:20px;display:inline-flex;align-items:center;gap:23px;padding:10px 15px;border-radius:6px;background:#e4ae8e;color:#241b1e;font-size:12px;font-weight:800}
+.companion-cta:hover{background:#f6c9a7;color:#1e191b}
+@media(max-width:1190px){.desktop-nav{column-gap:16px}.desktop-nav .companion-nav{padding-left:11px}.topbar-inner{gap:16px}}
+@media(max-width:750px){.companion-feature{grid-template-columns:1fr;padding:23px;gap:22px}.companion-art{min-height:155px}.companion-art img{width:74px;height:74px}}
